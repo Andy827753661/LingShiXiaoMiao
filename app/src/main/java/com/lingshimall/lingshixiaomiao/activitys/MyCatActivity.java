@@ -16,5 +16,6 @@ public class MyCatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cat);
         //翟瑶瑶的帐号测试提交！
+
     }
 }
