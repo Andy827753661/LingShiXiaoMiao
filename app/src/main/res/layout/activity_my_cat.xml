@@ -20,17 +20,14 @@
         android:layout_weight="7"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+
 
             <RadioGroup
                 android:id="@+id/main_radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
 
                 <RadioButton
                     android:id="@+id/main_radiobutton_home"
@@ -77,7 +74,6 @@
                     android:text="待评价"
                     android:textSize="15sp" />
             </RadioGroup>
-        </LinearLayout>
 
 
 
