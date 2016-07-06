@@ -1,52 +1,68 @@
 package com.lingshimall.lingshixiaomiao;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.RadioButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
-public class MainActivity extends AppCompatActivity {
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lingshimall.lingshixiaomiao.shouye.ShouYe;
+import com.lingshimall.lingshixiaomiao.temai.TeMai;
+import com.lingshimall.lingshixiaomiao.wo.Wo;
+import com.lingshimall.lingshixiaomiao.zhuanti.ZhuanTi;
 
+public class MainActivity extends BaseActivity {
 
-    private RadioGroup mian_radiogroup;
-    private RadioButton mian_radiobutton_home, mian_radiobutton_sale, mian_radiobutton_subject, mian_radiobutton_mine;
+    private FragmentManager fragmentManager;
+
+    @ViewInject(R.id.main_radiogroup)
+    public RadioGroup mian_radiogroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //测试提交
-        initView();
+        //启动注解
+        ViewUtils.inject(this);
+        fragmentManager = getSupportFragmentManager();
+        initContent();
         aboutRadioBUttonChecked();
 
+    }
+
+    private void initContent() {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_framelayout, new ShouYe());
+        fragmentTransaction.commit();
     }
 
     private void aboutRadioBUttonChecked() {
 
         mian_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            Fragment fragment = null;
+
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId){
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                switch (checkedId) {
                     case R.id.main_radiobutton_home:
+                        fragment = new ShouYe();
                         break;
                     case R.id.main_radiobutton_sale:
+                        fragment = new TeMai();
                         break;
                     case R.id.main_radiobutton_subject:
+                        fragment = new ZhuanTi();
                         break;
                     case R.id.main_radiobutton_mine:
+                        fragment = new Wo();
                         break;
                 }
+                fragmentTransaction.replace(R.id.main_framelayout, fragment);
+                fragmentTransaction.commit();
             }
         });
     }
-
-    private void initView() {
-        mian_radiogroup= (RadioGroup) findViewById(R.id.main_radiogroup);
-        mian_radiobutton_home= (RadioButton) findViewById(R.id.main_radiobutton_home);
-        mian_radiobutton_sale= (RadioButton) findViewById(R.id.main_radiobutton_sale);
-        mian_radiobutton_subject= (RadioButton) findViewById(R.id.main_radiobutton_subject);
-        mian_radiobutton_mine= (RadioButton) findViewById(R.id.main_radiobutton_mine);
-    }
-
 }
