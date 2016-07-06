@@ -7,6 +7,7 @@ import com.lingshimall.lingshixiaomiao.R;
 
 public class MyCatActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
