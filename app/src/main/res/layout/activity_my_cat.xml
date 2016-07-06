@@ -12,78 +12,292 @@
         android:layout_weight="2"
         android:background="@mipmap/bg_user">
 
+        <ImageView
+            android:id="@+id/mycat_conner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_xiaomiao_conner"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/mycat_conner"
+            android:layout_centerHorizontal="true"
+            >
+            <Button
+                android:id="@+id/mycat_registe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册"
+                android:textColor="#ffffff"
+                android:background="@null"/>
+            <Button
+                android:id="@+id/mycat_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登录"
+                android:textColor="#ffffff"
+                android:background="@null"/>
+
+
+        </LinearLayout>
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#666666"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
         android:orientation="vertical">
-            <RadioGroup
-                android:id="@+id/main_radiogroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
 
-                <RadioButton
-                    android:id="@+id/main_radiobutton_home"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:checked="true"
-                    android:drawableTop="@mipmap/icon_pay_big"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="代付款"
-                    android:textSize="15sp" />
-
-                <RadioButton
-                    android:id="@+id/main_radiobutton_sale"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@mipmap/icon_delivery"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="待发货"
-                    android:textSize="15sp" />
-
-                <RadioButton
-                    android:id="@+id/main_radiobutton_subject"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@mipmap/icon_logistics"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="待收货"
-                    android:textSize="15sp" />
-
-                <RadioButton
-                    android:id="@+id/main_radiobutton_mine"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@mipmap/icon_evaluate"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="待评价"
-                    android:textSize="15sp" />
-            </RadioGroup>
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/main_radiogroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/main_radiobutton_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@mipmap/icon_pay_big"
+                android:gravity="center_horizontal|bottom"
+                android:text="代付款"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/main_radiobutton_sale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_delivery"
+                android:gravity="center_horizontal|bottom"
+                android:text="待发货"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/main_radiobutton_subject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_logistics"
+                android:gravity="center_horizontal|bottom"
+                android:text="待收货"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/main_radiobutton_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_evaluate"
+                android:gravity="center_horizontal|bottom"
+                android:text="待评价"
+                android:textSize="15sp"
+                android:checked="false" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666"></View>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/mycat_myorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_order"
+                android:text="我的订单"
+                android:textSize="20sp"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/icon_order"
-                android:text="我的订单"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"/>
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="查看全部订单"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_myorder"/>
 
-        </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#666666" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/mycat_taobaoorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_tb_order"
+                android:text="淘宝订单"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="查看全部订单"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_taobaoorder"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#666666"
+                android:layout_alignBottom="@+id/mycat_taobaoorder"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/mycat_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_coupon"
+                android:text="我的优惠券"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="查看全部订单"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_coupon"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/mycat_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_like_mine"
+                android:text="我的收藏"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_mine"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#666666" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/mycat_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_service"
+                android:text="联系客服"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="010-57236350"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_service"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/mycat_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/icon_feedback"
+                android:text="联系客服"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="010-57236350"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/mycat_feedback"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#666666" />
 
     </LinearLayout>
 
