@@ -19,9 +19,6 @@
         android:layout_height="0dp"
         android:layout_weight="7"
         android:orientation="vertical">
-
-
-
             <RadioGroup
                 android:id="@+id/main_radiogroup"
                 android:layout_width="match_parent"
@@ -74,8 +71,19 @@
                     android:text="待评价"
                     android:textSize="15sp" />
             </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_order"
+                android:text="我的订单"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"/>
 
-
+        </LinearLayout>
 
     </LinearLayout>
 
