@@ -16,6 +16,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".activitys.MyCatAboutOrder"
+            android:label="@string/title_activity_my_cat_about_order"
+            android:parentActivityName=".BaseActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lingshimall.lingshixiaomiao.BaseActivity" />
+        </activity>
     </application>
 
 </manifest>

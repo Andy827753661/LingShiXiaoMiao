@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lingshimall.lingshixiaomiao.fragments.MyCatFragment;
 import com.lingshimall.lingshixiaomiao.shouye.ShouYe;
 import com.lingshimall.lingshixiaomiao.temai.TeMai;
 import com.lingshimall.lingshixiaomiao.wo.Wo;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
         initContent();
         aboutRadioBUttonChecked();
+
 
     }
 
@@ -57,7 +59,7 @@ public class MainActivity extends BaseActivity {
                         fragment = new ZhuanTi();
                         break;
                     case R.id.main_radiobutton_mine:
-                        fragment = new Wo();
+                        fragment =new MyCatFragment();
                         break;
                 }
                 fragmentTransaction.replace(R.id.main_framelayout, fragment);
