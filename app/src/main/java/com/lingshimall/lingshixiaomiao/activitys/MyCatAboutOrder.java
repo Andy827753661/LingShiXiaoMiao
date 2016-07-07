@@ -57,10 +57,10 @@ public class MyCatAboutOrder extends AppCompatActivity {
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             llp.weight = 1;
-            llp.setMargins(10, 10, 10, 10);
+            llp.setMargins(20, 20, 20, 20);
             TextView view = new TextView(this);
             view.setText(titles[i]);
-            view.setTextSize(20);
+            view.setTextSize(15);
             view.setTextColor(Color.BLACK);
             view.setGravity(Gravity.CENTER);
             view.setEnabled(true);
