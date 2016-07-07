@@ -15,8 +15,13 @@ import com.lingshimall.lingshixiaomiao.R;
 public class ZhuanTi extends Fragment {
 
     private View view;
-
     public ZhuanTi() {
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -24,5 +29,11 @@ public class ZhuanTi extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_zhuanti_layout, container, false);
         return view;
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 }
