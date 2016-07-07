@@ -138,24 +138,26 @@ public class MyCatFragment extends Fragment {
         mycat_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.mycat_radiobutton_pay:
-                        Toast.makeText(getContext(), "代付款", Toast.LENGTH_LONG).show();
-
-                        break;
-                    case R.id.mycat_radiobutton_logistics:
-                        Toast.makeText(getContext(), "待发货", Toast.LENGTH_LONG).show();
-
-                        break;
-                    case R.id.mycat_radiobutton_delivery:
-                        Toast.makeText(getContext(), "待收货", Toast.LENGTH_LONG).show();
-
-                        break;
-                    case R.id.mycat_radiobutton_evaluate:
-                        Toast.makeText(getContext(), "待评价", Toast.LENGTH_LONG).show();
-
-                        break;
-                }
+//                switch (checkedId){
+//                    case R.id.mycat_radiobutton_pay:
+//                        Toast.makeText(getContext(), "代付款", Toast.LENGTH_LONG).show();
+//
+//                        break;
+//                    case R.id.mycat_radiobutton_logistics:
+//                        Toast.makeText(getContext(), "待发货", Toast.LENGTH_LONG).show();
+//
+//                        break;
+//                    case R.id.mycat_radiobutton_delivery:
+//                        Toast.makeText(getContext(), "待收货", Toast.LENGTH_LONG).show();
+//
+//                        break;
+//                    case R.id.mycat_radiobutton_evaluate:
+//                        Toast.makeText(getContext(), "待评价", Toast.LENGTH_LONG).show();
+//
+//                        break;
+//                }
+                Intent intent=new Intent(getActivity(), MyCatAboutOrder.class);
+                startActivity(intent);
 
             }
         });
