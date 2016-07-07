@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
         initContent();
         aboutRadioBUttonChecked();
+
     }
 
     private void initContent() {
