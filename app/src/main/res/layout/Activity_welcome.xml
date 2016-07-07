@@ -6,49 +6,45 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_welcome_id"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-
+        android:layout_height="wrap_content">
     </android.support.v4.view.ViewPager>
+
     <LinearLayout
         android:id="@+id/ll_container_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
 
         >
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:background="@drawable/dot_selector"
+            android:background="@drawable/selector_dot"
 
             />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/selector_dot" />
 
-            android:background="@drawable/dot_selector"
-            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/selector_dot" />
 
-            android:background="@drawable/dot_selector"
-            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/selector_dot" />
 
-            android:background="@drawable/dot_selector"
-            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:background="@drawable/dot_selector"  />
+            android:background="@drawable/selector_dot" />
 
     </LinearLayout>
 
