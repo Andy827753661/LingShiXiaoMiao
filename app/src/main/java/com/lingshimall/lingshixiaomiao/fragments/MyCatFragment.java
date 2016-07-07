@@ -163,6 +163,7 @@ public class MyCatFragment extends Fragment {
 
 
     private void aboutRegiste() {
+
     }
 
     private void aboutLogin() {

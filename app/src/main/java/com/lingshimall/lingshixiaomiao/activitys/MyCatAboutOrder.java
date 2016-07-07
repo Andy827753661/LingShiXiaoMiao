@@ -64,7 +64,6 @@ public class MyCatAboutOrder extends AppCompatActivity {
             view.setTextColor(Color.BLACK);
             view.setGravity(Gravity.CENTER);
             view.setEnabled(true);
-            view.setBackgroundResource(R.drawable.bg_progress);
             view.setLayoutParams(llp);
             linearLayout.addView(view);
 
