@@ -27,9 +27,7 @@ public class ZhuantiGridAdapter extends BaseAdapter {
 
     private ImageView zhuanti_grid_item_tv_iv;
 
-    private Integer[] imgs = {
-            R.mipmap.ic_cat_collection_noting, R.mipmap.ic_cat_collection_noting, R.mipmap.ic_cat_collection_noting, R.mipmap.ic_cat_collection_noting
-    };
+    private Integer[] imgs = {R.mipmap.icon_rihan,R.mipmap.icon_oumei,R.mipmap.icon_taiwan,R.mipmap.icon_hanguo};
 
     public ZhuantiGridAdapter(ArrayList<HashMap<String, Object>> listItems, Context context) {
         this.listItems = listItems;
@@ -59,15 +57,11 @@ public class ZhuantiGridAdapter extends BaseAdapter {
 
             convertView = inflater.inflate(R.layout.zhuanti_grid_item, null);
 
-            zhuanti_grid_item_tv_country = (TextView) convertView.findViewById(R.id.zhuanti_grid_item_tv_country);
-           // zhuanti_grid_item_tv_describ = (TextView) convertView.findViewById(R.id.zhuanti_grid_item_tv_describ);
             zhuanti_grid_item_tv_iv = (ImageView) convertView.findViewById(R.id.zhuanti_grid_item_tv_iv);
             convertView.setTag(zhuanti_grid_item_tv_iv);
         } else {
             zhuanti_grid_item_tv_iv = (ImageView) convertView.getTag();
         }
-
-        zhuanti_grid_item_tv_country.setText(listItems.get(position).toString());
         zhuanti_grid_item_tv_iv.setImageResource(imgs[position]);
 
         return convertView;

@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity {
                         fragment =new MyCatFragment();
                         break;
                 }
+
                 fragmentTransaction.replace(R.id.main_framelayout, fragment);
                 fragmentTransaction.commit();
             }

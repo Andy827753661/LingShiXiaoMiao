@@ -57,6 +57,10 @@ public class ZhuanTi extends Fragment {
     }
 
     private void aboutListView() {
+
+    }
+
+    private void aboutGridView() {
         listItems = new ArrayList<HashMap<String, Object>>();
         //将数组信息分别存入ArrayList中
         int len = item.length;
@@ -68,10 +72,6 @@ public class ZhuanTi extends Fragment {
         }
 
         gridView.setAdapter(new ZhuantiGridAdapter(listItems,getContext()));
-
-    }
-
-    private void aboutGridView() {
 
     }
 }
