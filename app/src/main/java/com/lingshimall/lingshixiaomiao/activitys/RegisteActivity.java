@@ -5,16 +5,13 @@ import android.os.Bundle;
 
 import com.lingshimall.lingshixiaomiao.R;
 
-public class MyCatActivity extends AppCompatActivity {
-
-
-
-
+public class RegisteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_cat);
-        //翟瑶瑶的帐号测试提交！
+        setContentView(R.layout.activity_registe);
+
+
     }
 }
