@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.LoginActivity;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 
 /**
@@ -169,6 +170,14 @@ public class MyCatFragment extends Fragment {
     }
 
     private void aboutLogin() {
+
+        mycat_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
