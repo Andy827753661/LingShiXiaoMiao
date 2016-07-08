@@ -60,6 +60,7 @@ public class MainActivity extends BaseActivity {
                         fragment = new Wo();
                         break;
                 }
+
                 fragmentTransaction.replace(R.id.main_framelayout, fragment);
                 fragmentTransaction.commit();
             }

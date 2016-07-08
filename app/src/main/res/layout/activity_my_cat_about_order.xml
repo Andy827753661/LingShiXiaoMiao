@@ -7,21 +7,58 @@
     tools:context="com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder"
     android:orientation="vertical">
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-        <LinearLayout
-            android:id="@+id/myorder_hs_linearLayout"
-            android:layout_width="match_parent"
+        <RadioButton
+            android:id="@+id/tab1_rb"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp">
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="全部" />
 
-        </LinearLayout>
+        <RadioButton
+            android:id="@+id/tab2_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="代付款" />
 
-    </HorizontalScrollView>
+        <RadioButton
+            android:id="@+id/tab3_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待发货" />
+
+        <RadioButton
+            android:id="@+id/tab4_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待收货" />
+
+        <RadioButton
+            android:id="@+id/tab5_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待发货" />
+    </RadioGroup>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/myorder_viewPager"

@@ -11,12 +11,14 @@ import java.util.List;
  */
 public class MyAdapter extends FragmentPagerAdapter {
 
-    List<Fragment> list;
+    private  List<Fragment> list;
+    private String[] titles;
 
 
     public MyAdapter(FragmentManager fm, List<Fragment> list) {
         super(fm);
         this.list = list;
+        this.titles = titles;
     }
     @Override
     public Fragment getItem(int arg0) {
