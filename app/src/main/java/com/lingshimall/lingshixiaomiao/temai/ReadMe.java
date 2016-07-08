@@ -5,4 +5,5 @@ package com.lingshimall.lingshixiaomiao.temai;
  */
 public class ReadMe {
     //这个文件夹存放“特卖”相关必要代码
+
 }

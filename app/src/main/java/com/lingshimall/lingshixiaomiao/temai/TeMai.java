@@ -8,11 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.adapters.CustomListViewAdapter;
 import com.lingshimall.lingshixiaomiao.adapters.CustomViewPagerAdapter;
@@ -31,10 +33,14 @@ public class TeMai extends Fragment {
     private TextView temaizhong, jijiangkaishi;
     private ArrayList<TextView> textViews;
     private ImageView gouwuche;
+    private final static int EACH_PAGE=15;
+    private int last_Item_Index;
+    private int page_Num=0;
+    boolean isLastRow = false;
 //    @ViewInject(R.id.temai_vp_id)
 //    private ViewPager viewPager;
 
-    private ArrayList<ListView> views;
+    private ArrayList<PullToRefreshListView> views;
 
     public TeMai() {
     }
@@ -57,7 +63,12 @@ public class TeMai extends Fragment {
         addListenerForViewPager();
         return view;
     }
+    private void initViewPager() {
 
+        initViewPagerData();
+        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(views);
+        viewPager.setAdapter(customViewPagerAdapter);
+    }
     private void addListenerForGouwuche() {
         gouwuche.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,29 +165,54 @@ public class TeMai extends Fragment {
     }
 
     private void initViewPagerData() {
-        views = new ArrayList<ListView>();
+        views = new ArrayList<PullToRefreshListView>();
         for (int i = 0; i < 2; i++) {
-            ListView listView = new ListView(context);
+            PullToRefreshListView listView = new PullToRefreshListView(context);
             initListViewData(listView);
+            listView.setOnScrollListener(new TheScrollListenerForPtrl());
+            listView.setOnItemClickListener(new TheItemClickListenerForPtrl());
+
             views.add(listView);
         }
-
     }
 
-    private void initListViewData(ListView listView) {
+    private void initListViewData(PullToRefreshListView listView) {
         ArrayList<Goods> goodses = new ArrayList<>();
         for (int i = 0; i <= 50; i++) {
             Goods good = new Goods("" + i, "第" + i + "个Good", "" + i, "" + i, "" + i, "" + i, "" + i, "" + i);
             goodses.add(good);
+            listView.setDividerDrawable(getResources().getDrawable(R.mipmap.line_address));
             CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(goodses, getActivity());
             listView.setAdapter(customListViewAdapter);
         }
     }
 
-    private void initViewPager() {
-
-        initViewPagerData();
-        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(views);
-        viewPager.setAdapter(customViewPagerAdapter);
+    //listview 单条点击监听
+    public class TheItemClickListenerForPtrl implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(getActivity(), "跳转到详情页" + position, Toast.LENGTH_SHORT).show();
+        }
     }
-}
+
+        //listview分页加载
+        public class TheScrollListenerForPtrl implements AbsListView.OnScrollListener {
+
+            //第1次：scrollState = SCROLL_STATE_TOUCH_SCROLL(1) 正在滚动
+            //第2次：scrollState = SCROLL_STATE_FLING(2) 手指做了抛的动作（手指离开屏幕前，用力滑了一下）
+            //第3次：scrollState = SCROLL_STATE_IDLE(0) 停止滚动
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if (isLastRow && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    Toast.makeText(getActivity(), "开始刷新数据" , Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount > 0) {
+                    isLastRow = true;
+                }
+            }
+        }
+    }
+

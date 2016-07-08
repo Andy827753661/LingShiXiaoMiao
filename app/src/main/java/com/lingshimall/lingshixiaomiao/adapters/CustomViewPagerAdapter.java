@@ -3,7 +3,8 @@ package com.lingshimall.lingshixiaomiao.adapters;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
 
@@ -11,9 +12,9 @@ import java.util.ArrayList;
  * Created by 张 波 on 2016/7/7.
  */
 public class CustomViewPagerAdapter extends PagerAdapter {
-    private ArrayList<ListView> views;
+    private ArrayList<PullToRefreshListView> views;
 
-    public CustomViewPagerAdapter(ArrayList<ListView> views) {
+    public CustomViewPagerAdapter(ArrayList<PullToRefreshListView> views) {
         this.views = views;
     }
 
