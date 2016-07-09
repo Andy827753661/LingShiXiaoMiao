@@ -181,7 +181,8 @@ public class TeMai extends Fragment {
     private void initListViewData(PullToRefreshListView listView) {
         ArrayList<Goods> goodses = new ArrayList<>();
         for (int i = 0; i <= 50; i++) {
-            Goods good = new Goods("" + i, "第" + i + "个Good", "" + i, "" + i, "" + i, "" + i, "" + i, "" + i);
+            Goods good = new Goods();
+            //添加数据
             goodses.add(good);
             listView.setDividerDrawable(getResources().getDrawable(R.mipmap.line_address));
             CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(goodses, getActivity());
