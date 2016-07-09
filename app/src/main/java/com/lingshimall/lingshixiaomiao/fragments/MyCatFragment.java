@@ -1,11 +1,7 @@
 package com.lingshimall.lingshixiaomiao.fragments;
 
-import android.animation.Animator;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,8 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 
