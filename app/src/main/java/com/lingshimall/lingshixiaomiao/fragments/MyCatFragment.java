@@ -48,6 +48,8 @@ public class MyCatFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_cat, null);
 
+
+
         mycat_registe= (Button) view.findViewById(R.id.mycat_registe);
         mycat_login= (Button) view.findViewById(R.id.mycat_login);
         mycat_radiogroup= (RadioGroup) view.findViewById(R.id.mycat_radiogroup);

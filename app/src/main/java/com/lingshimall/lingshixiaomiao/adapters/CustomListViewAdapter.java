@@ -53,6 +53,7 @@ public class CustomListViewAdapter extends BaseAdapter {
             holder.textView.setText(goodses.get(position).getGoodName());
         }
         return convertView;
+
     }
 
     private class ViewHolder {
