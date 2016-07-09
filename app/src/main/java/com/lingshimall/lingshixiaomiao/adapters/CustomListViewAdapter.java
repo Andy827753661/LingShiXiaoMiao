@@ -46,11 +46,11 @@ public class CustomListViewAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.listview_item_layout, null);
-            holder.textView = (TextView) convertView.findViewById(R.id.list_item_tv_id);
+//            holder.textView = (TextView) convertView.findViewById();
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
-            holder.textView.setText(goodses.get(position).getGoodName());
+//            holder.textView.setText();
         }
         return convertView;
     }
