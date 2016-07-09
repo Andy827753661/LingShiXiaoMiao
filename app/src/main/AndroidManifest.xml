@@ -29,12 +29,19 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lingshimall.lingshixiaomiao.BaseActivity" />
+            <intent-filter>
+                　　<action android:name="android.intent.action.MyCatAboutOrder" />
+                　　<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
         </activity>
         <activity android:name=".activitys.RegisteActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+
         <activity android:name=".activitys.LoginActivity"></activity>
+
+        　　<uses-permission android:name="android.permission.CALL_PHONE"/>
+
+        　　
     </application>
 
 </manifest>

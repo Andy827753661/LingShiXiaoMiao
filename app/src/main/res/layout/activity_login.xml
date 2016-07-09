@@ -19,29 +19,33 @@
             android:id="@+id/login_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_feedback_logo"/>
+            android:src="@mipmap/icon_feedback_logo"
+            android:layout_marginTop="20dp"/>
         <EditText
             android:id="@+id/login_phonenum"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="请输入11位手机号"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="30dp"
+           />
 
         <EditText
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入6-11位数字英文密码"/>
+            android:hint="请输入6-11位数字英文密码"
+           />
 
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text="登录"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
             android:layout_marginTop="20dp"
-            android:background="#FFFF0040"/>
+            android:background="#FFFF0040"
+            android:onClick="loginNormal"/>
 
     </LinearLayout>
 
@@ -61,7 +65,8 @@
         android:text="手机号注册"
         android:textColor="#ffffff"
         android:layout_toRightOf="@id/login_tv_zhuce"
-        android:layout_alignBaseline="@id/login_tv_zhuce"/>
+        android:layout_alignBaseline="@id/login_tv_zhuce"
+        android:onClick="phonenumRegiste"/>
 
 
 <View
@@ -75,7 +80,7 @@
         android:id="@+id/login_tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点三方登录"
+        android:text="第三方登录"
         android:layout_below="@id/login_view_1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -86,32 +91,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/login_tv_login"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         >
-        <ImageView
+        <ImageButton
             android:id="@+id/login_qq"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/icon_qq_normal"/>
-        <ImageView
+            android:src="@mipmap/icon_qq_normal"
+            android:background="@null"
+            android:onClick="othersLogin"/>
+        <ImageButton
             android:id="@+id/login_weixin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/icon_wx_normal"/>
-        <ImageView
+            android:src="@mipmap/icon_wx_normal"
+            android:background="@null"
+            android:onClick="othersLogin"/>
+        <ImageButton
             android:id="@+id/login_wb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/icon_wb_normal"/>
-
+            android:src="@mipmap/icon_wb_normal"
+            android:background="@null"
+        android:onClick="othersLogin"/>
     </LinearLayout>
-
-
-
-
-
 
 </RelativeLayout>
