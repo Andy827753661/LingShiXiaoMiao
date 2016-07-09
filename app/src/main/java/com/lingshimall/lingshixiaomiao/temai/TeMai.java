@@ -168,6 +168,8 @@ public class TeMai extends Fragment {
         views = new ArrayList<PullToRefreshListView>();
         for (int i = 0; i < 2; i++) {
             PullToRefreshListView listView = new PullToRefreshListView(context);
+            View emptyView=getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout,null);
+            listView.setEmptyView(emptyView);
             initListViewData(listView);
             listView.setOnScrollListener(new TheScrollListenerForPtrl());
             listView.setOnItemClickListener(new TheItemClickListenerForPtrl());

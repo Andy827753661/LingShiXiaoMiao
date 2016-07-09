@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -29,19 +31,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lingshimall.lingshixiaomiao.BaseActivity" />
-            <intent-filter>
-                　　<action android:name="android.intent.action.MyCatAboutOrder" />
-                　　<category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
         </activity>
         <activity android:name=".activitys.RegisteActivity" />
-
-        <activity android:name=".activitys.LoginActivity"></activity>
-
-        　　<uses-permission android:name="android.permission.CALL_PHONE"/>
-
-        　　
+        <activity
+            android:name=".activitys.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".BaseActivity"></activity>
     </application>
-
 </manifest>
