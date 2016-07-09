@@ -1,6 +1,7 @@
 package com.lingshimall.lingshixiaomiao.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.LoginActivity;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
+import com.lingshimall.lingshixiaomiao.activitys.RegisteActivity;
 
 /**
  * Created by zhai on 2016/7/7.
@@ -44,7 +46,7 @@ public class MyCatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_my_cat, null);
+        View view = inflater.inflate(R.layout.fragment_my_cat, null);
 
         mycat_registe= (Button) view.findViewById(R.id.mycat_registe);
         mycat_login= (Button) view.findViewById(R.id.mycat_login);
@@ -116,6 +118,9 @@ public class MyCatFragment extends Fragment {
                 case R.id.mycat_Rl_service:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         Toast.makeText(getContext(), "联系客服", Toast.LENGTH_LONG).show();
+                        Intent intentPhone = new Intent(Intent.ACTION_CALL);
+                        intentPhone.setData(Uri.parse("tel:17010289903"));
+                        startActivity(intentPhone);
                     }
                     break;
                 case R.id.mycat_Rl_feedback:
@@ -160,6 +165,13 @@ public class MyCatFragment extends Fragment {
 
 
     private void aboutRegiste() {
+        mycat_registe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), RegisteActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
