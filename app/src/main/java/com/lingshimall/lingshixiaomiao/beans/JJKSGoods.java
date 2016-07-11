@@ -1,28 +1,28 @@
 package com.lingshimall.lingshixiaomiao.beans;
 
 /**
- * Created by 张 波 on 2016/7/7.
+ * Created by 张 波 on 2016/7/11.
  */
-public class Goods {
+public class JJKSGoods {
 
     /**
-     * begin_hour :
+     * begin_hour : 10:00_1
      * desc :
      * fav_num : 0
      * freight : 0
      * guide_type : 0
-     * id : 8085
-     * img : {"img_h":640,"img_url":"http://img.lingshi.cccwei.com/lingshi/ad5/d5/5/c457e2ed8cbad75e853f14bfe86a7ad5.jpeg","img_w":640}
-     * price : {"current":26.5,"prime":49.5}
+     * id : 9411
+     * img : {"img_h":640,"img_url":"http://img.lingshi.cccwei.com/lingshi/276/76/6/7550a315ee1ca9e8f451eaf460a7d276.jpeg","img_w":640}
+     * price : {"current":6.9,"prime":15}
      * sold_num : 0
-     * special_num : 925
-     * special_percentage : 63
+     * special_num :
+     * special_percentage :
      * status : 0
      * surplus_num : 0
-     * tag : {"color":1,"title":"5.4折"}
-     * time : 1468029600
-     * title : 韩国进口八道御膳章鱼海鲜拉面 大包装
-     * type : 2
+     * tag : {"color":1,"title":"4.6折"}
+     * time : 1468548000
+     * title : [台湾德昌] 黑胡椒味豆干 遵循古法精心调制
+     * type : 1
      */
 
     private String begin_hour;
@@ -33,25 +33,25 @@ public class Goods {
     private int id;
     /**
      * img_h : 640
-     * img_url : http://img.lingshi.cccwei.com/lingshi/ad5/d5/5/c457e2ed8cbad75e853f14bfe86a7ad5.jpeg
+     * img_url : http://img.lingshi.cccwei.com/lingshi/276/76/6/7550a315ee1ca9e8f451eaf460a7d276.jpeg
      * img_w : 640
      */
 
     private ImgBean img;
     /**
-     * current : 26.5
-     * prime : 49.5
+     * current : 6.9
+     * prime : 15
      */
 
     private PriceBean price;
     private int sold_num;
-    private int special_num;
-    private int special_percentage;
+    private String special_num;
+    private String special_percentage;
     private int status;
     private int surplus_num;
     /**
      * color : 1
-     * title : 5.4折
+     * title : 4.6折
      */
 
     private TagBean tag;
@@ -131,19 +131,19 @@ public class Goods {
         this.sold_num = sold_num;
     }
 
-    public int getSpecial_num() {
+    public String getSpecial_num() {
         return special_num;
     }
 
-    public void setSpecial_num(int special_num) {
+    public void setSpecial_num(String special_num) {
         this.special_num = special_num;
     }
 
-    public int getSpecial_percentage() {
+    public String getSpecial_percentage() {
         return special_percentage;
     }
 
-    public void setSpecial_percentage(int special_percentage) {
+    public void setSpecial_percentage(String special_percentage) {
         this.special_percentage = special_percentage;
     }
 
