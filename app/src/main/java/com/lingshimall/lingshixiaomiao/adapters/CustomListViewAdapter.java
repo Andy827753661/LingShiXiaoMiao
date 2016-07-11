@@ -55,6 +55,7 @@ public class CustomListViewAdapter extends BaseAdapter {
 //            holder.textView.setText();
         }
         return convertView;
+
     }
 
     private class ViewHolder {

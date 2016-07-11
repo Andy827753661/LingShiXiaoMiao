@@ -39,5 +39,7 @@
             android:name=".activitys.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".BaseActivity"></activity>
+
+        <user_persion android:name="android.permission.CALL_PHONE"></user_persion>
     </application>
 </manifest>
