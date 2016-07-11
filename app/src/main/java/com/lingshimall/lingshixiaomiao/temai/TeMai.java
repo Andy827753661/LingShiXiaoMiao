@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.adapters.CustomListViewAdapter;
 import com.lingshimall.lingshixiaomiao.adapters.CustomViewPagerAdapter;
 import com.lingshimall.lingshixiaomiao.beans.Goods;
+import com.lingshimall.lingshixiaomiao.beans.URLs;
+import com.lingshimall.lingshixiaomiao.utils.TeMaiUtils;
 
 import java.util.ArrayList;
 
@@ -191,10 +194,27 @@ public class TeMai extends Fragment {
         }
     }
 
+    public class RequestDataThread extends Thread{
+
+    }
+
     private void initListViewData(PullToRefreshListView listView) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                byte[] jsonStr= TeMaiUtils.getJsonStrData(URLs.TEMAIZHONG);
+                ArrayList<Goods> goods=TeMaiUtils.getListFromJsonStr(jsonStr);
+                Log.e("TAG===>", "run:goods.size() "+goods.size() );
+            }
+        }).start();
+
         ArrayList<Goods> goodses = new ArrayList<>();
         for (int i = 0; i <= 50; i++) {
             Goods good = new Goods();
+
+
+
             //添加数据
             goodses.add(good);
             listView.setDividerDrawable(getResources().getDrawable(R.mipmap.line_address));
