@@ -42,6 +42,8 @@ public class CustomListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
