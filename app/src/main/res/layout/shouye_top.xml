@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/hd_id"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_welcome_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:id="@+id/ll_container_id"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:alpha="0.6"
+            >
+           <!-- android:background="@drawable/shouye_selector"-->
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shouye_selector"
+
+                />
+            <ImageView
+                android:background="@drawable/shouye_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:background="@drawable/shouye_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:background="@drawable/shouye_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/pinpai_id"
+        android:layout_below="@id/hd_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/tutu"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="品牌特卖"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            />
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="折扣限时抢，每天10:00准时上新"
+            android:textSize="15sp"
+            android:textColor="#FF0000"
+
+
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/qiqi_id"
+        android:padding="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/pinpai"
+        android:layout_below="@id/pinpai_id"
+        />
+    <LinearLayout
+        android:id="@+id/banjia_id"
+        android:layout_below="@id/qiqi_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        >
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:background="#FF2e4c"
+            android:text="半价"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7月7吃货节"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/banjia_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/weihuo"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/liangyuan"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/remailing"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/remai"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

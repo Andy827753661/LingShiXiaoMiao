@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/shouye_tv_id"
+    <RelativeLayout
+        android:id="@+id/top_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="首页Fragment"
+        android:padding="10dp"
+        >
 
-        />
+        <ImageView
 
-</LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_ord"
+            android:id="@+id/imageView"
+
+            />
+
+        <SearchView
+            android:id="@+id/sc_id"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/imageView"
+            android:iconifiedByDefault="false"
+
+           android:searchIcon="@mipmap/icon_search"
+
+
+            >
+        </SearchView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_cart_pressed"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/sc_id"
+            />
+    </RelativeLayout>
+
+
+    <com.lingshimall.lingshixiaomiao.fragments.BlogsListView
+        android:id="@+id/lv_id"
+        android:layout_below="@id/top_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </com.lingshimall.lingshixiaomiao.fragments.BlogsListView>
+</RelativeLayout>
