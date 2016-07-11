@@ -2,7 +2,8 @@ package com.lingshimall.lingshixiaomiao.utils;
 
 import android.util.Log;
 
-import com.lingshimall.lingshixiaomiao.beans.Goods;
+import com.lingshimall.lingshixiaomiao.beans.JJKSGoods;
+import com.lingshimall.lingshixiaomiao.beans.TMZGoods;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,11 +60,11 @@ public class TeMaiUtils {
         }
 
 
-    public static ArrayList<Goods> getListFromJsonStr(byte []data) {
+    public static ArrayList<TMZGoods> getTMZListFromJsonStr(byte[] data) {
         if (data != null) {
             String jsonStr = new String(data);
 
-            ArrayList<Goods> goodses = new ArrayList<>();
+            ArrayList<TMZGoods> goodses = new ArrayList<>();
             try {
                 JSONObject firstObj = new JSONObject(jsonStr);
                 int rs_code = firstObj.getInt("rs_code");
@@ -95,28 +96,29 @@ public class TeMaiUtils {
 //                        String title=TextFormatUtils.unicode2UTF8(title1);
                         Log.e("TAG", "getListFromJsonStr:title"+title );
                         //给JavaBean填充数据
-                        Goods goods = new Goods();
-                        goods.setId(id);
+                        TMZGoods TMZGoods = new TMZGoods();
+                        TMZGoods.setId(id);
 
-                        Goods.ImgBean imgBean = new Goods.ImgBean();
+                        TMZGoods.ImgBean imgBean = new TMZGoods.ImgBean();
                         imgBean.setImg_url(img_url);
-                        goods.setImg(imgBean);
+                        TMZGoods.setImg(imgBean);
 
-                        Goods.PriceBean priceBean = new Goods.PriceBean();
+                        TMZGoods.PriceBean priceBean = new TMZGoods.PriceBean();
                         priceBean.setCurrent(current);
                         priceBean.setPrime(prime);
-                        goods.setPrice(priceBean);
+                        TMZGoods.setPrice(priceBean);
 
-                        goods.setSpecial_num(special_num);
-                        goods.setSpecial_percentage(special_percentage);
+                        TMZGoods.setSpecial_num(special_num);
+                        TMZGoods.setSpecial_percentage(special_percentage);
 
-                        Goods.TagBean tagBean = new Goods.TagBean();
+                        TMZGoods.TagBean tagBean = new TMZGoods.TagBean();
                         tagBean.setTitle(tag_title);
+                        TMZGoods.setTag(tagBean);
 
-                        goods.setTime(time);
-                        goods.setTitle(title);
+                        TMZGoods.setTime(time);
+                        TMZGoods.setTitle(title);
 
-                        goodses.add(goods);
+                        goodses.add(TMZGoods);
                     }
                     return goodses;
                 }
@@ -128,5 +130,65 @@ public class TeMaiUtils {
         }
             return null;
         }
+
+    public static ArrayList<JJKSGoods> getJJKSListFromJsonStr(byte[] data) {
+
+        if (data != null) {
+            String jsonStr = new String(data);
+            ArrayList<JJKSGoods> goodses = new ArrayList<>();
+            try {
+                JSONObject firstObj = new JSONObject(jsonStr);
+                int rs_code = firstObj.getInt("rs_code");
+                String rs_msg = firstObj.getString("rs_msg");
+                if (rs_code == 1000 && rs_msg.equals("success")) {
+                    JSONObject dataObj = firstObj.getJSONObject("data");
+                    JSONArray itemsArr = dataObj.getJSONArray("items");
+                    int count = itemsArr.length();
+                    for (int i = 0; i < count; ++i) {
+                        JSONObject itemObj = itemsArr.getJSONObject(i);
+
+                        JSONObject imgObj = itemObj.getJSONObject("img");
+                        String img_url = imgObj.getString("img_url");
+
+                        JSONObject tagObj = itemObj.getJSONObject("tag");
+                        String tag_title = tagObj.getString("title");
+
+                        String title = itemObj.getString("title");
+
+                        JSONObject priceObj = itemObj.getJSONObject("price");
+                        double current = priceObj.getDouble("current");
+                        double prime = priceObj.getDouble("prime");
+
+                        int time = itemObj.getInt("time");
+                        //给javabean 添加数据
+                        JJKSGoods good = new JJKSGoods();
+                        good.setTitle(title);
+                        good.setTime(time);
+
+                        JJKSGoods.PriceBean priceBean = new JJKSGoods.PriceBean();
+                        priceBean.setCurrent(current);
+                        priceBean.setPrime(prime);
+                        good.setPrice(priceBean);
+
+                        JJKSGoods.TagBean tagBean = new JJKSGoods.TagBean();
+                        tagBean.setTitle(tag_title);
+                        good.setTag(tagBean);
+
+                        JJKSGoods.ImgBean imgBean = new JJKSGoods.ImgBean();
+                        imgBean.setImg_url(img_url);
+                        good.setImg(imgBean);
+
+                        goodses.add(good);
+                    }
+
+                    return goodses;
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
 }
