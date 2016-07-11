@@ -5,13 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
-
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lingshimall.lingshixiaomiao.fragments.MyCatFragment;
 import com.lingshimall.lingshixiaomiao.shouye.ShouYe;
 import com.lingshimall.lingshixiaomiao.temai.TeMai;
-import com.lingshimall.lingshixiaomiao.wo.Wo;
 import com.lingshimall.lingshixiaomiao.zhuanti.ZhuanTi;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,8 +24,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //启动注解
-        ViewUtils.inject(this);
+        x.view().inject(this);
         fragmentManager = getSupportFragmentManager();
         initContent();
         aboutRadioBUttonChecked();
@@ -57,9 +56,10 @@ public class MainActivity extends BaseActivity {
                         fragment = new ZhuanTi();
                         break;
                     case R.id.main_radiobutton_mine:
-                        fragment = new Wo();
+                        fragment = new MyCatFragment();
                         break;
                 }
+
                 fragmentTransaction.replace(R.id.main_framelayout, fragment);
                 fragmentTransaction.commit();
             }

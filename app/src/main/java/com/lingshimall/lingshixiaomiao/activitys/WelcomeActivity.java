@@ -1,33 +1,32 @@
 package com.lingshimall.lingshixiaomiao.activitys;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.lingshimall.lingshixiaomiao.MainActivity;
+import com.lingshimall.lingshixiaomiao.R;
 
-        import java.util.LinkedList;
-        import java.util.List;
-
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.content.SharedPreferences.Editor;
-        import android.os.Bundle;
-        import android.support.v4.view.PagerAdapter;
-        import android.support.v4.view.ViewPager;
-        import android.support.v4.view.ViewPager.OnPageChangeListener;
-        import android.support.v7.app.ActionBarActivity;
-        import android.view.View;
-        import android.view.View.OnClickListener;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
-        import android.widget.LinearLayout;
-
-        import com.lingshimall.lingshixiaomiao.MainActivity;
-        import com.lingshimall.lingshixiaomiao.R;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
  * Description： 欢迎界面<br/>
  *
  */
-public class WelcomeActivity extends ActionBarActivity {
+public class WelcomeActivity extends Activity {
 
     private List<View> ds;
     private ViewPager vp_welcome_id;
@@ -42,11 +41,12 @@ public class WelcomeActivity extends ActionBarActivity {
 
         boolean isUsed = sharedPreferences.getBoolean("isUsed", false);
         if (isUsed) {
-
+            SystemClock.sleep(3000);
            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            finish();
         } else {
 
-           setContentView(R.layout.welcome);
+            setContentView(R.layout.activity_welcome);
 
 
             vp_welcome_id = (ViewPager) findViewById(R.id.vp_welcome_id);
@@ -59,6 +59,7 @@ public class WelcomeActivity extends ActionBarActivity {
 
             // 将用户的使用信息，存储起来
             saveUseInfoToFile();
+
         }
 
     }
@@ -150,6 +151,7 @@ public class WelcomeActivity extends ActionBarActivity {
                 // 点击后，跳转到主界面
                startActivity(new Intent(WelcomeActivity.this,
                        MainActivity.class));
+                finish();
             }
         });
 
