@@ -1,5 +1,6 @@
 package com.lingshimall.lingshixiaomiao.temai;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,10 +46,21 @@ public class TeMai extends Fragment {
     public TeMai() {
     }
 
-    @Override
+/*    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = getActivity();
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }*/
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
     }
 
     @Nullable
@@ -110,6 +122,7 @@ public class TeMai extends Fragment {
     }
 
     private int whichPage(View v, ArrayList<TextView> textViews) {
+
         for (int i = 0; i < textViews.size(); i++) {
             if (v == textViews.get(i)) {
                 return i;

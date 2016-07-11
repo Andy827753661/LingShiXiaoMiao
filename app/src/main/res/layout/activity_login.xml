@@ -100,7 +100,7 @@
             android:layout_weight="1"
             android:src="@mipmap/icon_qq_normal"
             android:background="@null"
-            android:onClick="othersLogin"/>
+            android:onClick="thirdLogin"/>
         <ImageButton
             android:id="@+id/login_weixin"
             android:layout_width="0dp"
@@ -108,7 +108,7 @@
             android:layout_weight="1"
             android:src="@mipmap/icon_wx_normal"
             android:background="@null"
-            android:onClick="othersLogin"/>
+            android:onClick="thirdLogin"/>
         <ImageButton
             android:id="@+id/login_wb"
             android:layout_width="0dp"
@@ -116,7 +116,7 @@
             android:layout_weight="1"
             android:src="@mipmap/icon_wb_normal"
             android:background="@null"
-        android:onClick="othersLogin"/>
+        android:onClick="thirdLogin"/>
     </LinearLayout>
 
 </RelativeLayout>
