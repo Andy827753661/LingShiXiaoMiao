@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class TeMai extends Fragment {
 
     private View view;
-    private Context context;
+//    private Context context;
     private ViewPager viewPager;
     private TextView temaizhong, jijiangkaishi;
     private ArrayList<TextView> textViews;
@@ -48,18 +48,6 @@ public class TeMai extends Fragment {
 
     public TeMai() {
     }
-
-/*    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.context = getActivity();
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }*/
 
     @Override
     public void onAttach(Activity activity) {
@@ -183,7 +171,7 @@ public class TeMai extends Fragment {
     private void initViewPagerData() {
         views = new ArrayList<PullToRefreshListView>();
         for (int i = 0; i < 2; i++) {
-            PullToRefreshListView listView = new PullToRefreshListView(context);
+            PullToRefreshListView listView = new PullToRefreshListView(getActivity());
             View emptyView=getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout,null);
             listView.setEmptyView(emptyView);
             initListViewData(listView);

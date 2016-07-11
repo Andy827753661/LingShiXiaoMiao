@@ -1,22 +1,15 @@
 package com.lingshimall.lingshixiaomiao.activitys;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.fragments.MyCatAboutOrderFragment;
-import com.lingshimall.lingshixiaomiao.wo.MyAdapter;
+import com.lingshimall.lingshixiaomiao.adapters.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

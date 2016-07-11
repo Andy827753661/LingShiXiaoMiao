@@ -1,4 +1,4 @@
-package com.lingshimall.lingshixiaomiao.wo;
+package com.lingshimall.lingshixiaomiao.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
