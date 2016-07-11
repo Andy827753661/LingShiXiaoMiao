@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
@@ -23,6 +24,8 @@ import com.lingshimall.lingshixiaomiao.activitys.RegisteActivity;
  * Created by zhai on 2016/7/7.
  */
 public class MyCatFragment extends Fragment {
+
+    private TextView mycat_conner;
 
     private Button mycat_registe;
     private Button mycat_login;
@@ -40,7 +43,6 @@ public class MyCatFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -48,8 +50,7 @@ public class MyCatFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_cat, null);
 
-
-
+        mycat_conner= (TextView) view.findViewById(R.id.mycat_conner);
         mycat_registe= (Button) view.findViewById(R.id.mycat_registe);
         mycat_login= (Button) view.findViewById(R.id.mycat_login);
         mycat_radiogroup= (RadioGroup) view.findViewById(R.id.mycat_radiogroup);
@@ -64,7 +65,6 @@ public class MyCatFragment extends Fragment {
         mycat_Rl_service= (RelativeLayout) view.findViewById(R.id.mycat_Rl_service);
         mycat_Rl_feedback= (RelativeLayout) view.findViewById(R.id.mycat_Rl_feedback);
 
-
         return view;
     }
 
@@ -75,6 +75,10 @@ public class MyCatFragment extends Fragment {
         aboutRegiste();
         aboutMycatRadiogroup();
         aboutRelativeLayout();
+
+        Bundle bundle = getArguments();
+        String userName = bundle.getString("userName");
+        mycat_conner.setText(userName);
 
     }
 
@@ -96,7 +100,7 @@ public class MyCatFragment extends Fragment {
             switch (v.getId()) {
                 case R.id.mycat_Rl_myorder:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "我的订单", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "我的订单", Toast.LENGTH_LONG).show();
 
                         Intent intent=new Intent(getActivity(), MyCatAboutOrder.class);
                         startActivity(intent);
@@ -104,22 +108,22 @@ public class MyCatFragment extends Fragment {
                     break;
                 case R.id.mycat_Rl_taobaoorder:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "淘宝订单", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "淘宝订单", Toast.LENGTH_LONG).show();
                     }
                     break;
                 case R.id.mycat_Rl_coupon:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "我的优惠券", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "我的优惠券", Toast.LENGTH_LONG).show();
                     }
                     break;
                 case R.id.mycat_Rl_mine:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "我的收藏", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "我的收藏", Toast.LENGTH_LONG).show();
                     }
                     break;
                 case R.id.mycat_Rl_service:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "联系客服", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "联系客服", Toast.LENGTH_LONG).show();
                         Intent intentPhone = new Intent(Intent.ACTION_CALL);
                         intentPhone.setData(Uri.parse("tel:17010289903"));
                         startActivity(intentPhone);
@@ -127,7 +131,7 @@ public class MyCatFragment extends Fragment {
                     break;
                 case R.id.mycat_Rl_feedback:
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        Toast.makeText(getContext(), "意见反馈", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "意见反馈", Toast.LENGTH_LONG).show();
                     }
                     break;
             }

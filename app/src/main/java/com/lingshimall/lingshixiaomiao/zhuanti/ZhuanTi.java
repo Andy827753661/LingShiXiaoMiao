@@ -71,7 +71,7 @@ public class ZhuanTi extends Fragment {
             listItems.add(map);
         }
 
-        gridView.setAdapter(new ZhuantiGridAdapter(listItems,getContext()));
+        gridView.setAdapter(new ZhuantiGridAdapter(listItems,getActivity()));
 
     }
 }
