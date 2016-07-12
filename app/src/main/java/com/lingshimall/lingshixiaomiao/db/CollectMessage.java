@@ -53,7 +53,7 @@ public class CollectMessage {
 						.getColumnIndex("collectName")));
 				collect.setCollectPrice(cursor.getDouble(cursor
 						.getColumnIndex("collectPrice")));
-				collect.setCollectImage(cursor.getInt(cursor
+				collect.setCollectImage(cursor.getString(cursor
 						.getColumnIndex("collectImg")));
 				collect.setUsername(cursor.getString(cursor
 						.getColumnIndex("userName")));
