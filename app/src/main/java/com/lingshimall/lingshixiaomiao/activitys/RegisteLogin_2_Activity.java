@@ -13,11 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.MainActivity;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.fragments.MyCatFragment;
 
-public class RegisteLogin_2_Activity extends AppCompatActivity {
+public class RegisteLogin_2_Activity extends BaseActivity {
 
     private EditText registe_checknum, registe_password_1, registe_password_2;
 

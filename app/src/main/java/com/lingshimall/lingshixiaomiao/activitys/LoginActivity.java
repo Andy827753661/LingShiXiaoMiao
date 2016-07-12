@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.beans.User;
 import com.lingshimall.lingshixiaomiao.wo.umeng.soexample.commons.Constants;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -30,13 +33,13 @@ import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private UMSocialService mController = UMServiceFactory
             .getUMSocialService(Constants.DESCRIPTOR);
 
-
-
     private ImageButton login_qq,login_weixin,login_wb;
+
+    private EditText login_phonenum,login_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +49,31 @@ public class LoginActivity extends AppCompatActivity {
 
         // 配置需要分享的相关平台
         configPlatforms();
-
         // 设置分享的内容
         setShareContent();
 
+        oldUserLogin();
+
     }
+
+
 
     private void initView() {
 
         login_qq= (ImageButton) findViewById(R.id.login_qq);
         login_weixin= (ImageButton) findViewById(R.id.login_weixin);
         login_wb= (ImageButton) findViewById(R.id.login_wb);
+
+        login_phonenum= (EditText) findViewById(R.id.login_phonenum);
+        login_password= (EditText) findViewById(R.id.login_password);
+    }
+
+    private void oldUserLogin() {
+        User oldUserInput=new User();
+        oldUserInput.setUserName(login_phonenum.getText().toString().trim());
+
+
+
     }
 
     //跳转到注册界面
@@ -65,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 
     /**
      * 配置分享平台参数
