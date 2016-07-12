@@ -50,8 +50,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                 />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
         <LinearLayout

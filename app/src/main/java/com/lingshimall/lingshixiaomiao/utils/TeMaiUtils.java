@@ -146,6 +146,7 @@ public class TeMaiUtils {
                     int count = itemsArr.length();
                     for (int i = 0; i < count; ++i) {
                         JSONObject itemObj = itemsArr.getJSONObject(i);
+                        int id = itemObj.getInt("id");
 
                         JSONObject imgObj = itemObj.getJSONObject("img");
                         String img_url = imgObj.getString("img_url");
@@ -162,6 +163,7 @@ public class TeMaiUtils {
                         int time = itemObj.getInt("time");
                         //给javabean 添加数据
                         JJKSGoods good = new JJKSGoods();
+                        good.setId(id);
                         good.setTitle(title);
                         good.setTime(time);
 

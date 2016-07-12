@@ -116,13 +116,6 @@ public class TeMai extends Fragment {
         return view;
     }
 
-    //给viewpager添加 置顶 btn
-    private void addTopBtnForVP() {
-        TextView btnTop = new TextView(context);
-        btnTop.setBackground(getResources().getDrawable(R.mipmap.btn_top));
-    }
-
-
     //给ListView添加 上拉+下拉  刷新监听
     private void addListenerForListView() {
 
@@ -337,7 +330,20 @@ public class TeMai extends Fragment {
 
     //给 ViewPager 添加 特卖中 页面
     private void addTMZListViewToVP() {
+        View viewTMZ = new View(context);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        viewTMZ.setLayoutParams(params);
+        ArrayList<View> viewlist = new ArrayList<>();
         listViewTMZ = new PullToRefreshListView(context);
+        TextView btn_top = new TextView(context);
+        viewlist.add(btn_top);
+        viewlist.add(listViewTMZ);
+        viewTMZ.addChildrenForAccessibility(viewlist);
+//      listViewTMZ = (PullToRefreshListView) viewTMZ.findViewById(R.id.ptr_listview_id);
+//        TextView btn_top= (TextView) viewTMZ.findViewById(R.id.btn_top_id);
+
+        setbtntopVisible(btn_top);
+//        btn_top.setOnClickListener(new TheListenerForTMZbtn());
 
         View emptyView = getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout, null);
         listViewTMZ.setEmptyView(emptyView);
@@ -362,6 +368,7 @@ public class TeMai extends Fragment {
         public RequestDataThreadForTMZ(String path) {
             this.pathURL = path;
         }
+
         @Override
         public void run() {
             super.run();
@@ -377,15 +384,13 @@ public class TeMai extends Fragment {
     }
 
     public class RequestDataThreadForJJKS extends Thread {
-        private int cur_Num;
-        private int page_Num;
         private String pathURL;
 
         public RequestDataThreadForJJKS(String path) {
-            this.cur_Num = cur_Num;
-            this.page_Num = page_Num;
+
             this.pathURL = path;
         }
+
         @Override
         public void run() {
             super.run();
@@ -415,7 +420,16 @@ public class TeMai extends Fragment {
 
     //给 ViewPager 添加 即将开始 页面
     private void addJSKSListViewToVP() {
+//        View viewJJKS=getActivity().getLayoutInflater().inflate(R.layout.temai_listview_btn_layout,null);
+//        listViewJJKS = (PullToRefreshListView) viewJJKS.findViewById(R.id.ptr_listview_id);
+//        TextView btn_top= (TextView) viewJJKS.findViewById(R.id.btn_top_id);
+//        setbtntopVisible(btn_top);
+//        btn_top.setOnClickListener(new TheListenerForJJKSbtn());
+
         listViewJJKS = new PullToRefreshListView(context);
+        View viewJJKS = new View(context);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        viewJJKS.setLayoutParams(params);
 //        listViewJJKS.setOnScrollListener(new TheScrollListenerForPtrl());
         listViewJJKS.setOnItemClickListener(new TheItemClickListenerForPtrl());
 //设置上拉 下拉 双模式
@@ -429,6 +443,20 @@ public class TeMai extends Fragment {
         views.add(listViewJJKS);
     }
 
+    private void setbtntopVisible(TextView btn) {
+        btn.setClickable(true);
+        btn.setHeight(30);
+        btn.setWidth(30);
+        btn.setRight(15);
+        btn.setBottom(15);
+        btn.setBackground(getResources().getDrawable(R.mipmap.btn_top));
+        if (listViewTMZ.getRefreshableView().getFirstVisiblePosition() >= 3) {
+            btn.setVisibility(View.VISIBLE);
+        } else {
+            btn.setVisibility(View.GONE);
+        }
+    }
+
     //listview 单条点击监听
     public class TheItemClickListenerForPtrl implements AdapterView.OnItemClickListener {
         @Override
@@ -437,6 +465,21 @@ public class TeMai extends Fragment {
         }
     }
 
+    private class TheListenerForTMZbtn implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            listViewJJKS.getRefreshableView().smoothScrollToPosition(0);
+        }
+    }
+
+    private class TheListenerForJJKSbtn implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            listViewJJKS.getRefreshableView().smoothScrollToPosition(0);
+        }
+    }
     /*    //listview分页加载
         public class TheScrollListenerForPtrl implements AbsListView.OnScrollListener {
 
