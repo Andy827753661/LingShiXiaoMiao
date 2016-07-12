@@ -15,12 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisteActivity extends AppCompatActivity {
+public class RegisteActivity extends BaseActivity {
 
     private Button registe_then_bt,registe_login_bt;
 
