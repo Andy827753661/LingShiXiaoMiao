@@ -23,7 +23,6 @@ public class UserMessage {
 	 * 
 	 * 
 	 */
-
 	private DataBaseHellper dataBaseHellper;
 
 	public void addUser(Context context, User user) {
@@ -45,7 +44,6 @@ public class UserMessage {
 
 		SQLiteDatabase db = DataBaseHellper.getInstance(context)
 				.getWritableDatabase();
-
 		ContentValues values = new ContentValues();
 		values.put("userName", user.getUserName());
 		values.put("image", user.getImg_url());

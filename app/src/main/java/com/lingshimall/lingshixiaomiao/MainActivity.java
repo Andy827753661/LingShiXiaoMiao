@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
+
+import com.lingshimall.lingshixiaomiao.beans.User;
+import com.lingshimall.lingshixiaomiao.db.UserMessage;
 import com.lingshimall.lingshixiaomiao.fragments.MyCatFragment;
 import com.lingshimall.lingshixiaomiao.shouye.ShouYe;
 import com.lingshimall.lingshixiaomiao.temai.TeMai;
@@ -25,6 +28,15 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //向数据库添加
+        User user=new User();
+        user.setUserName("123");
+        user.setPassword("123");
+        user.setImg_url("dshfkjhdslkfhkja");
+        UserMessage userMessage=new UserMessage();
+        userMessage.addUser(this,user);
 
 
         x.view().inject(this);
@@ -61,9 +73,9 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_radiobutton_mine:
                         fragment = new MyCatFragment();
                         Intent intentLogin=getIntent();
-                        String userPhone=intentLogin.getStringExtra("phoneNum");
+                        String userName=intentLogin.getStringExtra("userName");
                         Bundle args = new Bundle();
-                        args.putString("userName",userPhone);
+                        args.putString("userName",userName);
                         fragment.setArguments(args);
                         break;
                 }

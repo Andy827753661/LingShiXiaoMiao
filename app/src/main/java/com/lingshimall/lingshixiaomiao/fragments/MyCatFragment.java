@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -19,13 +21,17 @@ import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.LoginActivity;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 import com.lingshimall.lingshixiaomiao.activitys.RegisteActivity;
+import com.lingshimall.lingshixiaomiao.beans.ShoppingCar;
 
 /**
  * Created by zhai on 2016/7/7.
  */
 public class MyCatFragment extends Fragment {
 
-    private TextView mycat_conner;
+    private ImageButton mycat_shoppingcar;
+
+    private ImageView mycat_conner;
+    private TextView mycat_conner_tv;
 
     private Button mycat_registe;
     private Button mycat_login;
@@ -50,7 +56,10 @@ public class MyCatFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_cat, null);
 
-        mycat_conner= (TextView) view.findViewById(R.id.mycat_conner);
+        mycat_shoppingcar= (ImageButton) view.findViewById(R.id.mycat_shoppingcar);
+
+        mycat_conner= (ImageView) view.findViewById(R.id.mycat_conner);
+        mycat_conner_tv= (TextView) view.findViewById(R.id.mycat_conner_tv);
         mycat_registe= (Button) view.findViewById(R.id.mycat_registe);
         mycat_login= (Button) view.findViewById(R.id.mycat_login);
         mycat_radiogroup= (RadioGroup) view.findViewById(R.id.mycat_radiogroup);
@@ -78,7 +87,12 @@ public class MyCatFragment extends Fragment {
 
         Bundle bundle = getArguments();
         String userName = bundle.getString("userName");
-        mycat_conner.setText(userName);
+        mycat_conner_tv.setText(userName);
+    }
+
+    public  void shoppingcar(View view){
+        Intent intent=new Intent(getActivity(), ShoppingCar.class);
+        startActivity(intent);
 
     }
 

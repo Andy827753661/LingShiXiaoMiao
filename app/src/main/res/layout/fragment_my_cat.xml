@@ -12,20 +12,40 @@
         android:layout_weight="3"
         android:background="@mipmap/bg_user">
 
-        <TextView
+        <ImageButton
+            android:id="@+id/mycat_shoppingcar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_cart_pressed"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="shoppingcar"
+            android:background="@null"
+            />
+
+        <ImageView
             android:id="@+id/mycat_conner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:drawableTop="@mipmap/icon_xiaomiao_conner" />
+            android:src="@mipmap/icon_xiaomiao_conner" />
+        <TextView
+            android:id="@+id/mycat_conner_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/mycat_conner"
+            android:text="hello"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/mycat_conner"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:id="@+id/mycat_registe"
@@ -51,7 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#ffffff">
 
         <RadioGroup
             android:id="@+id/mycat_radiogroup"
@@ -111,7 +132,8 @@
         <RelativeLayout
             android:id="@+id/mycat_Rl_myorder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
 
             <TextView
                 android:id="@+id/mycat_myorder"
@@ -139,7 +161,8 @@
             android:id="@+id/mycat_Rl_taobaoorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
 
             <TextView
                 android:id="@+id/mycat_taobaoorder"
@@ -159,8 +182,6 @@
                 android:layout_marginRight="10dp"
                 android:drawableRight="@mipmap/icon_arrow_right"
                 android:text="查看全部订单" />
-
-
         </RelativeLayout>
 
 
@@ -168,7 +189,8 @@
             android:id="@+id/mycat_Rl_coupon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
 
             <TextView
                 android:id="@+id/mycat_coupon"
@@ -192,7 +214,8 @@
         <RelativeLayout
             android:id="@+id/mycat_Rl_mine"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
 
             <TextView
                 android:id="@+id/mycat_mine"
@@ -217,7 +240,8 @@
             android:id="@+id/mycat_Rl_service"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
 
             <TextView
                 android:id="@+id/mycat_service"
@@ -242,7 +266,8 @@
         <RelativeLayout
             android:id="@+id/mycat_Rl_feedback"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@null">
 
             <TextView
                 android:id="@+id/mycat_feedback"
