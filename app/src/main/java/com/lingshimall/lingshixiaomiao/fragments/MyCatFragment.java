@@ -47,6 +47,7 @@ public class MyCatFragment extends Fragment {
     private RelativeLayout myact_Rl_mine;
     private RelativeLayout mycat_Rl_service;
     private RelativeLayout mycat_Rl_feedback;
+    private String userName;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +76,9 @@ public class MyCatFragment extends Fragment {
         mycat_Rl_service= (RelativeLayout) view.findViewById(R.id.mycat_Rl_service);
         mycat_Rl_feedback= (RelativeLayout) view.findViewById(R.id.mycat_Rl_feedback);
 
+        Bundle bundle = getArguments();
+        userName = bundle.getString("userName");
+        mycat_conner_tv.setText(userName);
         return view;
     }
 
@@ -87,9 +91,7 @@ public class MyCatFragment extends Fragment {
         aboutRelativeLayout();
         aboutShoppingCar();
 
-        Bundle bundle = getArguments();
-        String userName = bundle.getString("userName");
-        mycat_conner_tv.setText(userName);
+
     }
 
     private void aboutShoppingCar() {
@@ -97,6 +99,7 @@ public class MyCatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(), ShoppingCarActivity.class);
+                intent.putExtra("userName",userName);
                 startActivity(intent);
             }
         });
@@ -207,6 +210,7 @@ public class MyCatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(), LoginActivity.class);
+
                 startActivity(intent);
             }
         });
