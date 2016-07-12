@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.lingshimall.lingshixiaomiao.R;
 
-public class ShoppingCar extends AppCompatActivity {
+public class ShoppingCarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

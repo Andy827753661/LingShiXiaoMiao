@@ -21,6 +21,7 @@ import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.LoginActivity;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 import com.lingshimall.lingshixiaomiao.activitys.RegisteActivity;
+import com.lingshimall.lingshixiaomiao.activitys.ShoppingCarActivity;
 import com.lingshimall.lingshixiaomiao.beans.ShoppingCar;
 
 /**
@@ -84,16 +85,21 @@ public class MyCatFragment extends Fragment {
         aboutRegiste();
         aboutMycatRadiogroup();
         aboutRelativeLayout();
+        aboutShoppingCar();
 
         Bundle bundle = getArguments();
         String userName = bundle.getString("userName");
         mycat_conner_tv.setText(userName);
     }
 
-    public  void shoppingcar(View view){
-        Intent intent=new Intent(getActivity(), ShoppingCar.class);
-        startActivity(intent);
-
+    private void aboutShoppingCar() {
+        mycat_shoppingcar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), ShoppingCarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //我的订单,淘宝订单,收藏,优惠券,联系客服,意见反馈的整个条目的点击事件

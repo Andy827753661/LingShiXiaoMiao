@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.lingshimall.lingshixiaomiao.activitys.ShoppingCar"
+    tools:context=".activitys.ShoppingCarActivity"
     android:orientation="vertical">
 
     <!-- 购物车  适配器布局 -->
@@ -40,7 +40,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/head_1" />
+            android:src="@mipmap/head_1" />
 
         <LinearLayout
             android:id="@+id/zhongjian_layout"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/shoppingcart_numtext_bg" >
+                android:background="@mipmap/shoppingcart_numtext_bg" >
 
                 <CheckBox
                     android:id="@+id/pro_reduce1"
