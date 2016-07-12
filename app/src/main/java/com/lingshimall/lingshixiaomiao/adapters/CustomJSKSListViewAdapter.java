@@ -70,7 +70,6 @@ public class CustomJSKSListViewAdapter extends BaseAdapter {
         Picasso.with(activity).load(good.getImg().getImg_url()).into(holder.picture);
         return convertView;
     }
-
     private class ViewHolder {
         ImageView picture;
         TextView discount, name, price, jianyishoujia, kaiqiangshijian;

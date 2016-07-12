@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\workspace_studio\project\LingShiXiaoMiao\lib\pull\assets"/><source path="D:\workspace_studio\project\LingShiXiaoMiao\lib\pull\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\workspace_studio\project\LingShiXiaoMiao\lib\pull\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\MyProject\LingShiXiaoMiao\lib\pull\assets"/><source path="F:\MyProject\LingShiXiaoMiao\lib\pull\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="F:\MyProject\LingShiXiaoMiao\lib\pull\src\debug\assets"/></dataSet></merger>

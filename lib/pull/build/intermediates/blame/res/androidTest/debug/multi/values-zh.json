@@ -1,6 +1,5 @@
 [
     {
-        "outputFile": "D:\\workspace_studio\\new\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-zh\\values-zh.xml",
         "outputFile": "F:\\MyProject\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-zh\\values-zh.xml",
         "map": [
             {
@@ -12,7 +11,6 @@
                     "endOffset": 121
                 },
                 "from": {
-                    "file": "D:\\workspace_studio\\new\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
                     "file": "F:\\MyProject\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
                     "position": {
                         "startLine": 2,
@@ -33,7 +31,6 @@
                 },
                 "from": {
                     "file": "F:\\MyProject\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
-                    "file": "D:\\workspace_studio\\new\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -52,7 +49,6 @@
                     "endOffset": 272
                 },
                 "from": {
-                    "file": "D:\\workspace_studio\\new\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
                     "file": "F:\\MyProject\\LingShiXiaoMiao\\lib\\pull\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
                     "position": {
                         "startLine": 4,

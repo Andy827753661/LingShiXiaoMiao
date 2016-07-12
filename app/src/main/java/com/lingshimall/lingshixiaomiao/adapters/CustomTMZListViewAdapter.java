@@ -33,7 +33,6 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        Log.e("TMZgetCount===》", "getCount: " + goodses.size());
         return goodses.size();
 //        Log.e("getCount===》", "getCount: "+goodses.size());
     }
