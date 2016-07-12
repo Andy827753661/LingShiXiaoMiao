@@ -11,10 +11,28 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/liangyuan"
         />
-    <TextView
-        android:id="@+id/text_1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="撸啊撸啊德玛西亚"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="撸啊撸啊德玛西亚"/>
+
+
+        <TextView
+            android:id="@+id/text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="价格"
+            android:textSize="10dp"
+            android:textColor="#FF0000"
+            />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>
