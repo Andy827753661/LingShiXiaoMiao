@@ -9,104 +9,122 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activitys.ShoppingCarActivity"
     android:orientation="vertical">
-
-    <!-- 购物车  适配器布局 -->
+    <!-- 购物车布局 -->
 
     <LinearLayout
-        android:id="@+id/pro_zuiwai_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/juxing"
+        android:background="@drawable/order_online_on_bg"
+        android:orientation="horizontal" >
+
+        <!-- 购物车的布局 -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="购物车"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/shopping_bianji"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:onClick="onClick"
+            android:text="编辑"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <!-- listview，购物车里面的东西有可能比较多，需要用listview来进行显示 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/shopping_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-        <CheckBox
-            android:id="@+id/pro_checkbox"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="45dp"
-            android:background="@drawable/checkbox_iten"
-            android:button="@null"
-            android:checked="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:onClick="onClick" />
-
-        <ImageView
-            android:id="@+id/pro_image"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/head_1" />
+        <!-- 全选的布局 -->
 
         <LinearLayout
-            android:id="@+id/zhongjian_layout"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <CheckBox
+                android:id="@+id/shopping_checkbox_quan"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/checkbox_iten"
+                android:button="@null"
+                android:onClick="onClick" />
 
             <TextView
-                android:id="@+id/pro_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="零食小猫"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="全选"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <!-- 合计的布局 -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合计:￥ "
                 android:textSize="18sp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/shopping_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/pro_shopPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="￥88"
-                    android:textColor="#f00"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/pro_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@mipmap/shoppingcart_numtext_bg" >
-
-                <CheckBox
-                    android:id="@+id/pro_reduce1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/sub_checkbox_item"
-                    android:button="@null"
-                    android:focusable="false" />
-
-                <TextView
-                    android:id="@+id/pro_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="5dp"
-                    android:text="88"
-                    android:textSize="18sp" />
-
-                <CheckBox
-                    android:id="@+id/pro_add1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/add_checkbox_item"
-                    android:button="@null"
-                    android:focusable="false" />
-            </LinearLayout>
+                android:text="0.00"
+                android:textColor="#f00"
+                android:textSize="18sp" />
         </LinearLayout>
+
+        <!-- 去结算的布局 -->
+
+        <Button
+            android:id="@+id/jiesuan_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#f00"
+            android:onClick="onClick"
+            android:text="立即购买"
+            android:textColor="#fff"
+            android:textSize="18sp" />
     </LinearLayout>
+
+
+
+
 </LinearLayout>
