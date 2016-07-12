@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pull_to_refresh_pull_label">精选全球美食，100%正品保证</string>
+    <string name="pull_to_refresh_refreshing_label">精选全球美食，100%正品保证</string>
+    <string name="pull_to_refresh_release_label">精选全球美食，100%正品保证</string>
+</resources>

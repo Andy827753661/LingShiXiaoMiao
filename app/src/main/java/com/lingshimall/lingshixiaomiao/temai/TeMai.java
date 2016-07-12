@@ -7,16 +7,16 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.adapters.CustomJSKSListViewAdapter;
@@ -40,10 +40,10 @@ public class TeMai extends Fragment {
     private TextView temaizhong, jijiangkaishi;
     private ArrayList<TextView> textViews;
     private ImageView gouwuche;
-    private final static int EACH_PAGE=15;
-    private int last_Item_Index;
-    private int page_Num=0;
-    boolean isLastRow = false;
+    private final static int PAGE_SIZE_NUM = 10;
+    private int tmz_Cur_Num = 1;
+    private int jjks_Cur_Num = 1;
+    //    boolean isLastRow = false;
     private CustomTMZListViewAdapter customTMZListViewAdapter;
     private CustomJSKSListViewAdapter customJSKSListViewAdapter;
     private ArrayList<PullToRefreshListView> views;
@@ -51,6 +51,7 @@ public class TeMai extends Fragment {
     private ArrayList<JJKSGoods> jjksGoodses;
     private PullToRefreshListView listViewTMZ;
     private PullToRefreshListView listViewJJKS;
+    private TextView nowTimeTV;
 
     //handler线程间通信
     Handler handler = new Handler() {
@@ -58,13 +59,30 @@ public class TeMai extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                tmzGoodses = (ArrayList<TMZGoods>) msg.obj;
-                Log.e("tmzGoodses.size()==>", "run: " + tmzGoodses.size());
-                setAdapterForTMZ(tmzGoodses);
+                if (tmz_Cur_Num == 1) {
+                    tmzGoodses = (ArrayList<TMZGoods>) msg.obj;
+                    setAdapterForTMZ();
+                } else {
+                    ArrayList<TMZGoods> newtmzGoodses = (ArrayList<TMZGoods>) msg.obj;
+                    if (newtmzGoodses != null) {
+                        tmzGoodses.addAll(newtmzGoodses);
+                        customTMZListViewAdapter.notifyDataSetChanged();
+                    }
+                    listViewTMZ.onRefreshComplete();
+                }
+
             } else if (msg.what == 1) {
-                jjksGoodses = (ArrayList<JJKSGoods>) msg.obj;
-                Log.e("jjksGoodses.size()==>", "run: " + jjksGoodses.size());
-                setAdapterForJJKS(jjksGoodses);
+                if (jjks_Cur_Num == 1) {
+                    jjksGoodses = (ArrayList<JJKSGoods>) msg.obj;
+                    setAdapterForJJKS();
+                } else {
+                    ArrayList<JJKSGoods> newjjksGoodses = (ArrayList<JJKSGoods>) msg.obj;
+                    if (newjjksGoodses != null) {
+                        jjksGoodses.addAll(newjjksGoodses);
+                        customJSKSListViewAdapter.notifyDataSetChanged();
+                    }
+                    listViewJJKS.onRefreshComplete();
+                }
             }
         }
     };
@@ -93,7 +111,135 @@ public class TeMai extends Fragment {
         addListenerForTextView();
         //给viewpager 添加监听
         addListenerForViewPager();
+        //给ListView添加 上拉+下拉  刷新监听
+        addListenerForListView();
         return view;
+    }
+
+    //给viewpager添加 置顶 btn
+    private void addTopBtnForVP() {
+        TextView btnTop = new TextView(context);
+        btnTop.setBackground(getResources().getDrawable(R.mipmap.btn_top));
+    }
+
+
+    //给ListView添加 上拉+下拉  刷新监听
+    private void addListenerForListView() {
+
+        //给ListView添加 下拉+上拉  加载监听
+        listViewTMZ.setOnRefreshListener(new TheRLForListViewTMZ1());
+        listViewJJKS.setOnRefreshListener(new TheRLForListViewJJKS());
+    }
+
+    public class TheRLForListViewTMZ1 implements PullToRefreshBase.OnRefreshListener {
+
+        @Override
+        public void onRefresh(PullToRefreshBase refreshView) {
+            if (refreshView.isShownHeader()) {
+
+                String nowTime = DateUtils.formatDateTime(
+                        getActivity(),
+                        System.currentTimeMillis(),
+                        DateUtils.FORMAT_SHOW_TIME
+                                | DateUtils.FORMAT_SHOW_DATE
+                                | DateUtils.FORMAT_ABBREV_ALL);
+                refreshView.getLoadingLayoutProxy()
+                        .setLastUpdatedLabel(nowTime);
+
+
+                String pathURL = URLs.TEMAIZHONG + "&" + URLs.PG_CUR + "=" + 1 + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+                new RequestDataThreadForTMZ(pathURL).start();
+
+            } else if (refreshView.isShownFooter()) {
+
+                tmz_Cur_Num += 1;
+                String pathURL = URLs.TEMAIZHONG + "&" + URLs.PG_CUR + "=" + tmz_Cur_Num + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+                new RequestDataThreadForTMZ(pathURL).start();
+            }
+        }
+    }
+
+    //给ListView添加 下拉 +上拉  监听
+    public class TheRLForListViewTMZ implements PullToRefreshBase.OnRefreshListener2 {
+
+        @Override
+        public void onPullDownToRefresh(PullToRefreshBase refreshView) {
+            String nowTime = DateUtils.formatDateTime(
+                    getActivity(),
+                    System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_TIME
+                            | DateUtils.FORMAT_SHOW_DATE
+                            | DateUtils.FORMAT_ABBREV_ALL);
+            refreshView.getLoadingLayoutProxy()
+                    .setLastUpdatedLabel(nowTime);
+//            nowTimeTV.setText(nowTime);
+            tmz_Cur_Num = 1;
+
+            String pathURL = URLs.TEMAIZHONG + "&" + URLs.PG_CUR + "=" + tmz_Cur_Num + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+            new RequestDataThreadForTMZ(pathURL).start();
+//            ToastUtil.showToast(getActivity(), "11111111111" + nowTime);
+        }
+
+        @Override
+        public void onPullUpToRefresh(PullToRefreshBase refreshView) {
+            tmz_Cur_Num = tmz_Cur_Num + 1;
+
+            String pathURL = URLs.TEMAIZHONG + "&" + URLs.PG_CUR + "=" + tmz_Cur_Num + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+            new RequestDataThreadForTMZ(pathURL).start();
+        }
+    }
+
+    public class TheRLForListViewJJKS1 implements PullToRefreshBase.OnRefreshListener {
+
+        @Override
+        public void onRefresh(PullToRefreshBase refreshView) {
+            String nowTime = DateUtils.formatDateTime(
+                    getActivity(),
+                    System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_TIME
+                            | DateUtils.FORMAT_SHOW_DATE
+                            | DateUtils.FORMAT_ABBREV_ALL);
+            refreshView.getLoadingLayoutProxy()
+                    .setLastUpdatedLabel(nowTime);
+//            nowTimeTV.setText(nowTime);
+
+            String pathURL = URLs.JIJIANGKAISHI + "&" + URLs.PG_CUR + "=" + 1 + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+            new RequestDataThreadForJJKS(pathURL).start();
+//            ToastUtil.showToast(getActivity(), "2222222222222" + nowTime);
+        }
+    }
+
+    //给ListView添加 下拉 +上拉  监听
+    public class TheRLForListViewJJKS implements PullToRefreshBase.OnRefreshListener2 {
+
+        @Override
+        public void onPullDownToRefresh(PullToRefreshBase refreshView) {
+            String nowTime = DateUtils.formatDateTime(
+                    getActivity(),
+                    System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_TIME
+                            | DateUtils.FORMAT_SHOW_DATE
+                            | DateUtils.FORMAT_ABBREV_ALL);
+            refreshView.getLoadingLayoutProxy()
+                    .setLastUpdatedLabel(nowTime);
+//            nowTimeTV.setText(nowTime);
+            String pathURL = URLs.JIJIANGKAISHI + "&" + URLs.PG_CUR + "=" + 1 + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+            new RequestDataThreadForJJKS(pathURL).start();
+//            ToastUtil.showToast(getActivity(), "2222222222222" + nowTime);
+        }
+
+        @Override
+        public void onPullUpToRefresh(PullToRefreshBase refreshView) {
+            jjks_Cur_Num += 1;
+            String pathURL = URLs.JIJIANGKAISHI + "&" + URLs.PG_CUR + "=" + jjks_Cur_Num + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+            new RequestDataThreadForJJKS(pathURL).start();
+        }
     }
 
     //初始化 viewpager  ：添加page
@@ -107,6 +253,8 @@ public class TeMai extends Fragment {
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(views);
         viewPager.setAdapter(customViewPagerAdapter);
     }
+
+    //右上角购物车点击监听
     private void addListenerForGouwuche() {
         gouwuche.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,10 +264,12 @@ public class TeMai extends Fragment {
         });
     }
 
+    //geiviewpager添加监听事件
     private void addListenerForViewPager() {
         viewPager.setOnPageChangeListener(new ThePageChangeListener());
     }
 
+    //给“热卖中”“即将开始”添加监听事件
     private void addListenerForTextView() {
         temaizhong.setOnClickListener(new TheTextViewListener());
         jijiangkaishi.setOnClickListener(new TheTextViewListener());
@@ -191,24 +341,34 @@ public class TeMai extends Fragment {
 
         View emptyView = getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout, null);
         listViewTMZ.setEmptyView(emptyView);
-
-        listViewTMZ.setOnScrollListener(new TheScrollListenerForPtrl());
+        //设置上拉 下拉 双模式
+        listViewTMZ.setMode(PullToRefreshBase.Mode.BOTH);
+//        listViewTMZ.setOnScrollListener(new TheScrollListenerForPtrl());
         listViewTMZ.setOnItemClickListener(new TheItemClickListenerForPtrl());
         listViewTMZ.setDividerDrawable(getResources().getDrawable(R.mipmap.line_address));
         //给 特卖中 页面  开启线程请求数据，并发送到 handler shezhi
-        new RequestDataThreadForTMZ().start();
+        String pathURL = URLs.TEMAIZHONG + "&" + URLs.PG_CUR + "=" + 1 + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+
+        new RequestDataThreadForTMZ(pathURL).start();
         views.add(listViewTMZ);
     }
 
     //请求数据的线程<特卖中>
     public class RequestDataThreadForTMZ extends Thread {
+        private int cur_Num;
+        private int page_Num;
+        private String pathURL;
+
+        public RequestDataThreadForTMZ(String path) {
+            this.pathURL = path;
+        }
         @Override
         public void run() {
             super.run();
             //请求到的 特卖中 数据
-            byte[] jsonStr = TeMaiUtils.getJsonStrData(URLs.TEMAIZHONG);
+//            ToastUtil.showToast(getActivity(), tmz_Cur_Num + "");
+            byte[] jsonStr = TeMaiUtils.getJsonStrData(pathURL);
             ArrayList<TMZGoods> goodsTMZ = TeMaiUtils.getTMZListFromJsonStr(jsonStr);
-            Log.e("TAG==goods.size()==>", "run: " + goodsTMZ.size());
             Message msg = handler.obtainMessage();
             msg.what = 0;
             msg.obj = goodsTMZ;
@@ -217,12 +377,21 @@ public class TeMai extends Fragment {
     }
 
     public class RequestDataThreadForJJKS extends Thread {
+        private int cur_Num;
+        private int page_Num;
+        private String pathURL;
+
+        public RequestDataThreadForJJKS(String path) {
+            this.cur_Num = cur_Num;
+            this.page_Num = page_Num;
+            this.pathURL = path;
+        }
         @Override
         public void run() {
             super.run();
-            byte[] jsonStr = TeMaiUtils.getJsonStrData(URLs.JIJIANGKAISHI);
+//            ToastUtil.showToast(getActivity(), jjks_Cur_Num + "");
+            byte[] jsonStr = TeMaiUtils.getJsonStrData(pathURL);
             ArrayList<JJKSGoods> goodsJJKS = TeMaiUtils.getJJKSListFromJsonStr(jsonStr);
-            Log.e("TAG==goods.size()==>", "run: " + goodsJJKS.size());
             Message msg = handler.obtainMessage();
             msg.what = 1;
             msg.obj = goodsJJKS;
@@ -230,28 +399,33 @@ public class TeMai extends Fragment {
         }
     }
 
-    private void setAdapterForTMZ(ArrayList<TMZGoods> goods) {
-        customTMZListViewAdapter = new CustomTMZListViewAdapter(goods, getActivity());
+    private void setAdapterForTMZ() {
+        customTMZListViewAdapter = new CustomTMZListViewAdapter(tmzGoodses, getActivity());
         listViewTMZ.setAdapter(customTMZListViewAdapter);
+        customTMZListViewAdapter.notifyDataSetChanged();
+        listViewTMZ.onRefreshComplete();
     }
 
-    private void setAdapterForJJKS(ArrayList<JJKSGoods> goods) {
-        customJSKSListViewAdapter = new CustomJSKSListViewAdapter(goods, getActivity());
+    private void setAdapterForJJKS() {
+        customJSKSListViewAdapter = new CustomJSKSListViewAdapter(jjksGoodses, getActivity());
         listViewJJKS.setAdapter(customJSKSListViewAdapter);
+        customJSKSListViewAdapter.notifyDataSetChanged();
+        listViewJJKS.onRefreshComplete();
     }
 
     //给 ViewPager 添加 即将开始 页面
     private void addJSKSListViewToVP() {
         listViewJJKS = new PullToRefreshListView(context);
-        listViewJJKS.setOnScrollListener(new TheScrollListenerForPtrl());
+//        listViewJJKS.setOnScrollListener(new TheScrollListenerForPtrl());
         listViewJJKS.setOnItemClickListener(new TheItemClickListenerForPtrl());
-
+//设置上拉 下拉 双模式
+        listViewJJKS.setMode(PullToRefreshBase.Mode.BOTH);
         View emptyView = getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout, null);
         listViewJJKS.setEmptyView(emptyView);
 
         listViewJJKS.setDividerDrawable(getResources().getDrawable(R.mipmap.line_address));
-
-        new RequestDataThreadForJJKS().start();
+        String pathURL = URLs.JIJIANGKAISHI + "&" + URLs.PG_CUR + "=" + 1 + "&" + URLs.PG_SIZE + "=" + PAGE_SIZE_NUM;
+        new RequestDataThreadForJJKS(pathURL).start();
         views.add(listViewJJKS);
     }
 
@@ -263,7 +437,7 @@ public class TeMai extends Fragment {
         }
     }
 
-        //listview分页加载
+    /*    //listview分页加载
         public class TheScrollListenerForPtrl implements AbsListView.OnScrollListener {
 
             //第1次：scrollState = SCROLL_STATE_TOUCH_SCROLL(1) 正在滚动
@@ -281,7 +455,7 @@ public class TeMai extends Fragment {
                     isLastRow = true;
                 }
             }
-        }
+        }*/
 
     private void initView() {
         viewPager = (ViewPager) view.findViewById(R.id.temai_vp_id);
@@ -295,6 +469,7 @@ public class TeMai extends Fragment {
 
         temaizhong.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         jijiangkaishi.setBackgroundColor(getResources().getColor(R.color.colorBlack));
+
     }
-    }
+}
 
