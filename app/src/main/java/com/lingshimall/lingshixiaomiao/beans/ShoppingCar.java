@@ -1,5 +1,7 @@
 package com.lingshimall.lingshixiaomiao.beans;
 
+import android.content.Intent;
+
 import java.net.URL;
 
 /**
@@ -9,7 +11,7 @@ import java.net.URL;
 
 public class ShoppingCar {
 	private String name;
-	private String image;
+	private int image;
 	private double price;
 	private int count;
 	private String userName;
@@ -44,11 +46,11 @@ public class ShoppingCar {
 	}
 
 
-	public String getImage() {
+	public int getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(int image) {
 		this.image = image;
 	}
 
@@ -60,7 +62,7 @@ public class ShoppingCar {
 		this.count = count;
 	}
 
-	public ShoppingCar(String name, String image, double price, int count,
+	public ShoppingCar(String name, int image, double price, int count,
 			String userName) {
 		super();
 		this.name = name;

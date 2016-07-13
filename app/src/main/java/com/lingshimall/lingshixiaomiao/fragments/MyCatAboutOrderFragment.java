@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.lingshimall.lingshixiaomiao.MainActivity;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -62,7 +63,7 @@ public class MyCatAboutOrderFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
-
+                getActivity().finish();
             }
         });
 
