@@ -10,5 +10,6 @@ public class URLs {
     public static final String PG_SIZE = "pg_size";
     public static final String JIJIANGKAISHI = "http://api.ds.lingshi.cccwei.com/?cid=797470&uid=0&tms=20160708110224&sig=a0bebf8a7a0c0be4&wssig=cb18b13ab096b708&os_type=3&version=24&channel_name=feibo&srv=2301&special_type=0&since_id=0";
     public static final String ZHUANTI="http://api.ds.lingshi.cccwei.com/?cid=797470&uid=0&tms=20160708112122&sig=3328a48dffdaa576&wssig=c5d7f0ea581f916b&os_type=3&version=24&channel_name=feibo&srv=2405&pg_cur=1&pg_size=20&since_id=0";
+    public static final String SHOUYEURL = "http://api.ds.lingshi.cccwei.com/?cid=797470&uid=0&tms=20160708100417&sig=ae3431ebd6ca7b8f&wssig=743027a2bc2c9cef&os_type=3&version=24&channel_name=feibo&srv=2206&since_id=0&pg_cur=1&pg_size=20";
 
 }
