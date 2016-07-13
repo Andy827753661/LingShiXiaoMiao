@@ -95,6 +95,7 @@ public class MyCatAboutOrder extends AppCompatActivity {
                     if (buttons[i].getId() == checkedId) {
                         // TODO 切换ViewPager
                         viewPager.setCurrentItem(i,false);
+
                     }
                 }
             }

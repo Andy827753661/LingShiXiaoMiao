@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.ShoppingCarActivity;
 import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.CustomJSKSListViewAdapter;
 import com.lingshimall.lingshixiaomiao.adapters.CustomTMZListViewAdapter;
@@ -119,6 +120,7 @@ public class TeMai extends Fragment {
         addListenerForViewPager();
         //给ListView添加 上拉+下拉  刷新监听
         addListenerForListView();
+
         return view;
     }
 
@@ -258,7 +260,8 @@ public class TeMai extends Fragment {
         gouwuche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "+++购物车+++", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ShoppingCarActivity.class);
+                startActivity(intent);
             }
         });
     }
