@@ -38,6 +38,7 @@
             android:src="@mipmap/btn_cart_pressed"
             android:layout_alignParentRight="true"
             android:layout_alignBaseline="@id/sc_id"
+            android:id="@+id/car_id"
             />
     </RelativeLayout>
 
