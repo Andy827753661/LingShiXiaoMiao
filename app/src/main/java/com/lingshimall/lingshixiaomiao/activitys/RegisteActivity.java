@@ -57,7 +57,7 @@ public class RegisteActivity extends BaseActivity {
                     Toast.makeText(RegisteActivity.this, "激活码发送成功!", Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(RegisteActivity.this,RegisteLogin_2_Activity.class);
                     intent.putExtra("msg", temp);
-                    intent.putExtra("phoneNum",phonenum);
+                    intent.putExtra("userName",phonenum);
                     startActivity(intent);
                     finish();
                 }
@@ -70,9 +70,6 @@ public class RegisteActivity extends BaseActivity {
                 else if(phonenum.length()==0){
                     Toast.makeText(RegisteActivity.this, "请输入电话号码！", Toast.LENGTH_LONG).show();
                 }
-
-
-
 
             }
 

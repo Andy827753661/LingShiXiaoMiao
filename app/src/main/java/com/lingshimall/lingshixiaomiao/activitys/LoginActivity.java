@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.BaseActivity;
+import com.lingshimall.lingshixiaomiao.MainActivity;
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.beans.User;
+import com.lingshimall.lingshixiaomiao.db.UserMessage;
 import com.lingshimall.lingshixiaomiao.wo.umeng.soexample.commons.Constants;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -31,6 +34,7 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
+import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends BaseActivity {
@@ -40,6 +44,8 @@ public class LoginActivity extends BaseActivity {
     private ImageButton login_qq,login_weixin,login_wb;
 
     private EditText login_phonenum,login_password;
+
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +57,6 @@ public class LoginActivity extends BaseActivity {
         configPlatforms();
         // 设置分享的内容
         setShareContent();
-
-        oldUserLogin();
-
     }
 
 
@@ -66,14 +69,27 @@ public class LoginActivity extends BaseActivity {
 
         login_phonenum= (EditText) findViewById(R.id.login_phonenum);
         login_password= (EditText) findViewById(R.id.login_password);
+
+        login= (Button) findViewById(R.id.login);
     }
 
-    private void oldUserLogin() {
+    private void loginNormal(View view) {
         User oldUserInput=new User();
         oldUserInput.setUserName(login_phonenum.getText().toString().trim());
+        oldUserInput.setPassword(login_password.getText().toString().trim());
 
+        UserMessage userMessage=new UserMessage();
 
+        List<User> userInfo=userMessage.getUser(this);
 
+        for (User user:userInfo) {
+            if (user.getUserName().equals(oldUserInput.getUserName())&&user.getPassword().equals(oldUserInput.getPassword())){
+                Intent intentMine=new Intent(this, MainActivity.class);
+                intentMine.putExtra("userName",oldUserInput.getUserName());
+                Toast.makeText(this, "登录成功！", Toast.LENGTH_LONG).show();
+                startActivity(intentMine);
+            }
+        }
     }
 
     //跳转到注册界面

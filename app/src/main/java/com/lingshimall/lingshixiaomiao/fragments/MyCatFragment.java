@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -19,13 +21,18 @@ import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.LoginActivity;
 import com.lingshimall.lingshixiaomiao.activitys.MyCatAboutOrder;
 import com.lingshimall.lingshixiaomiao.activitys.RegisteActivity;
+import com.lingshimall.lingshixiaomiao.activitys.ShoppingCarActivity;
+import com.lingshimall.lingshixiaomiao.beans.ShoppingCar;
 
 /**
  * Created by zhai on 2016/7/7.
  */
 public class MyCatFragment extends Fragment {
 
-    private TextView mycat_conner;
+    private ImageButton mycat_shoppingcar;
+
+    private ImageView mycat_conner;
+    private TextView mycat_conner_tv;
 
     private Button mycat_registe;
     private Button mycat_login;
@@ -40,6 +47,7 @@ public class MyCatFragment extends Fragment {
     private RelativeLayout myact_Rl_mine;
     private RelativeLayout mycat_Rl_service;
     private RelativeLayout mycat_Rl_feedback;
+    private String userName;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +58,10 @@ public class MyCatFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_cat, null);
 
-        mycat_conner= (TextView) view.findViewById(R.id.mycat_conner);
+        mycat_shoppingcar= (ImageButton) view.findViewById(R.id.mycat_shoppingcar);
+
+        mycat_conner= (ImageView) view.findViewById(R.id.mycat_conner);
+        mycat_conner_tv= (TextView) view.findViewById(R.id.mycat_conner_tv);
         mycat_registe= (Button) view.findViewById(R.id.mycat_registe);
         mycat_login= (Button) view.findViewById(R.id.mycat_login);
         mycat_radiogroup= (RadioGroup) view.findViewById(R.id.mycat_radiogroup);
@@ -65,6 +76,9 @@ public class MyCatFragment extends Fragment {
         mycat_Rl_service= (RelativeLayout) view.findViewById(R.id.mycat_Rl_service);
         mycat_Rl_feedback= (RelativeLayout) view.findViewById(R.id.mycat_Rl_feedback);
 
+        Bundle bundle = getArguments();
+        userName = bundle.getString("userName");
+        mycat_conner_tv.setText(userName);
         return view;
     }
 
@@ -75,11 +89,20 @@ public class MyCatFragment extends Fragment {
         aboutRegiste();
         aboutMycatRadiogroup();
         aboutRelativeLayout();
+        aboutShoppingCar();
 
-        Bundle bundle = getArguments();
-        String userName = bundle.getString("userName");
-        mycat_conner.setText(userName);
 
+    }
+
+    private void aboutShoppingCar() {
+        mycat_shoppingcar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), ShoppingCarActivity.class);
+                intent.putExtra("userName",userName);
+                startActivity(intent);
+            }
+        });
     }
 
     //我的订单,淘宝订单,收藏,优惠券,联系客服,意见反馈的整个条目的点击事件
@@ -187,6 +210,7 @@ public class MyCatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(), LoginActivity.class);
+
                 startActivity(intent);
             }
         });

@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.MainActivity;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.beans.User;
+import com.lingshimall.lingshixiaomiao.db.UserMessage;
 import com.lingshimall.lingshixiaomiao.fragments.MyCatFragment;
 
 public class RegisteLogin_2_Activity extends BaseActivity {
@@ -66,6 +68,13 @@ public class RegisteLogin_2_Activity extends BaseActivity {
             intentMine.putExtra("checked",true);
 
             Toast.makeText(RegisteLogin_2_Activity.this, "注册成功！", Toast.LENGTH_LONG).show();
+
+            User newUser=new User();
+            newUser.setUserName(phoneNum);
+            newUser.setPassword(registe_password_1.getText().toString().trim());
+
+            UserMessage userMessage=new UserMessage();
+            userMessage.addUser(RegisteLogin_2_Activity.this,newUser);
             timeco.cancel();
             startActivity(intentMine);
             finish();
