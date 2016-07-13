@@ -113,6 +113,7 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
             if (msg.what == 2) {
                 String t = CustomTMZListViewAdapter.getDateToString(mTime);
                 timeView.setText(t);
+                mTime = mTime - 1000;
                 new TheTimeThread(mTime).start();
             }
         }
@@ -128,7 +129,6 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         @Override
         public void run() {
             super.run();
-            mTime = mTime - 1000;
             if (mTime > 0) {
                 Message message = handler.obtainMessage(2);
                 handler.sendMessageDelayed(message, 1000);
@@ -136,9 +136,9 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         }
     }
 
-    public static String getDateToString(long time) {
-        Date d = new Date(time * 100L);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd日HH时mm分ss秒");
+    public static String getDateToString(int time) {
+        Date d = new Date(time);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd天HH时mm分ss秒");
         return simpleDateFormat.format(d);
     }
 
