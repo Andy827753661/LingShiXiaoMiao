@@ -63,7 +63,7 @@ public class ZhuanTiListViewAdapter  extends BaseAdapter{
         ZhuanTiModel zhuanTiModel=list.get(position);
 
         Picasso.with(context).load(zhuanTiModel.getImg_url()).into(holder.zhuanti_list_item_iv);
-        holder.zhuanti_list_item_tv.setText(zhuanTiModel.getDesc());
+        holder.zhuanti_list_item_tv.setText("    " + zhuanTiModel.getTitle());
         holder.zhuanti_list_item_like_tv.setText(zhuanTiModel.getHotindex()+"");
 
 

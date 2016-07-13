@@ -2,7 +2,6 @@ package com.lingshimall.lingshixiaomiao.adapters;
 
 import android.app.Activity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -22,13 +21,11 @@ import java.util.ArrayList;
  */
 public class CustomTMZListViewAdapter extends BaseAdapter {
     private ArrayList<TMZGoods> goodses;
-    private LayoutInflater layoutInflater;
     private Activity activity;
 
     public CustomTMZListViewAdapter(ArrayList<TMZGoods> goodses, Activity activity) {
         this.goodses = goodses;
         this.activity = activity;
-        this.layoutInflater = activity.getLayoutInflater();
     }
 
     @Override
@@ -54,7 +51,7 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.listview_item_tmz_layout, null);
+            convertView = activity.getLayoutInflater().from(activity).inflate(R.layout.listview_item_tmz_layout, null);
 
             holder.picture = (ImageView) convertView.findViewById(R.id.list_picture_id);
             holder.addcar = (TextView) convertView.findViewById(R.id.list_addcar_id);
