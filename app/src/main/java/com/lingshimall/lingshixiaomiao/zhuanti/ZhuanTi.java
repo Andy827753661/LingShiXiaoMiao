@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.activitys.LieBiaoActivity;
 import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.ZhuanTiListViewAdapter;
@@ -51,6 +53,7 @@ public class ZhuanTi extends Fragment {
     private String[] item = {"日韩", "欧美", "台湾", "韩国"};
 
     private String list_jsonStr;
+    private ArrayList<ZhuanTiModel> list;
 
     private Handler handler=new Handler(){
         @Override
@@ -77,10 +80,26 @@ public class ZhuanTi extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.zhuanti_gv_id);
         listView = (ListView) view.findViewById(R.id.zhuanti_lv_id);
-
+        listView.setOnItemClickListener(new TheListenerOfLV());
         return view;
     }
 
+    public class TheListenerOfLV implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (list != null) {
+                Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+                Bundle bundle = new Bundle();
+                int listID = list.get(position).getId();
+                bundle.putInt("GoodId", listID);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), "网络阻塞，请刷新", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -106,7 +125,7 @@ public class ZhuanTi extends Fragment {
 
     private void listViewsetdata(){
         if (list_jsonStr!=null) {
-            ArrayList<ZhuanTiModel> list = parseJson(list_jsonStr);
+            list = parseJson(list_jsonStr);
 
             ZhuanTiListViewAdapter adapter = new ZhuanTiListViewAdapter(getContext(), list);
 
@@ -115,8 +134,6 @@ public class ZhuanTi extends Fragment {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                   Intent intent=new Intent(getActivity(), XiangQingActivity.class);
-//                   startActivity(intent);
                }
            });
 
@@ -136,16 +153,6 @@ public class ZhuanTi extends Fragment {
         }
         gridView.setAdapter(new ZhuantiGridAdapter(gridItems,getActivity()));
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent=new Intent(getActivity(), XiangQingActivity.class);
-//                startActivity(intent);
-            }
-        });
-
-
-
     }
 
 
@@ -157,11 +164,15 @@ public class ZhuanTi extends Fragment {
             try {
                 zhuanTis=new ArrayList<>();
                 JSONObject firstObj = new JSONObject(list_jsonStr);
+//                int rs_code = firstObj.getInt("rs_code");
+//                String rs_msg = firstObj.getString("rs_msg");
 
+//                if (rs_msg.equals("success") && rs_code == 1000) {
                     JSONObject jsonObject=firstObj.getJSONObject("data");
                     JSONArray jsonArray=jsonObject.getJSONArray("items");
                     for (int i=0;i<jsonArray.length();i++){
                         ZhuanTiModel zhuantiModel=new ZhuanTiModel();
+
                         JSONObject itemObj = jsonArray.getJSONObject(i);
                         int id=itemObj.getInt("id");
                         zhuantiModel.setId(id);

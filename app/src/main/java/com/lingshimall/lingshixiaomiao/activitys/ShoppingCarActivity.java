@@ -1,26 +1,22 @@
 package com.lingshimall.lingshixiaomiao.activitys;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.R;
-import com.lingshimall.lingshixiaomiao.adapters.ShoppingCarAdapter;
 import com.lingshimall.lingshixiaomiao.beans.ShoppingCar;
-import com.lingshimall.lingshixiaomiao.beans.User;
-import com.lingshimall.lingshixiaomiao.db.ShoppingMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCarActivity extends AppCompatActivity {
+public class ShoppingCarActivity extends BaseActivity {
 
     private ListView shoppingcar_lv;
 
@@ -82,15 +78,15 @@ public class ShoppingCarActivity extends AppCompatActivity {
 
         shoppingcar_lv= (ListView) findViewById(R.id.shopping_listview);
 
-        Intent intent=getIntent();
-        userName=intent.getStringExtra("userName");
-
-        ShoppingMessage shoppingMessage=new ShoppingMessage();
-        list=shoppingMessage.getShopping(userName,this);
-
-        ShoppingCarAdapter adapter=new ShoppingCarAdapter(this,list,handler);
-
-        shoppingcar_lv.setAdapter(adapter);
+//        Intent intent=getIntent();
+//        userName=intent.getStringExtra("userName");
+//
+//        ShoppingMessage shoppingMessage=new ShoppingMessage();
+//        list=shoppingMessage.getShopping(userName,this);
+//
+//        ShoppingCarAdapter adapter=new ShoppingCarAdapter(this,list,handler);
+//
+//        shoppingcar_lv.setAdapter(adapter);
 
     }
 }

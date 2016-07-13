@@ -1,13 +1,7 @@
 package com.lingshimall.lingshixiaomiao.activitys;
 
 import android.app.PendingIntent;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.database.ContentObserver;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -19,7 +13,6 @@ import com.lingshimall.lingshixiaomiao.BaseActivity;
 import com.lingshimall.lingshixiaomiao.R;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisteActivity extends BaseActivity {
 

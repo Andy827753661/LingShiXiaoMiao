@@ -461,13 +461,18 @@ public class TeMai extends Fragment {
     public class TheItemClickListenerForJJKS implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(getActivity(), "跳转到详情页" + position, Toast.LENGTH_SHORT).show();
-            int jjksId = jjksGoodses.get(position).getId();
-            Intent intent = new Intent(getActivity(), XiangQingActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putInt("GoodId", jjksId);
-            intent.putExtras(bundle);
-            startActivity(intent);
+//            Toast.makeText(getActivity(), "跳转到详情页" + position, Toast.LENGTH_SHORT).show();
+            if (jjksGoodses != null) {
+                int jjksId = jjksGoodses.get(position).getId();
+                Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("GoodId", jjksId);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), "网络阻塞，请刷新", Toast.LENGTH_SHORT).show();
+
+            }
         }
     }
 

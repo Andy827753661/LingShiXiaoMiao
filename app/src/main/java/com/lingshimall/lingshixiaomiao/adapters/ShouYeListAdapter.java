@@ -2,7 +2,6 @@ package com.lingshimall.lingshixiaomiao.adapters;
 
 import android.app.Activity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -21,11 +20,9 @@ import java.util.ArrayList;
 public class ShouYeListAdapter extends BaseAdapter {
 
     private ArrayList<ShangPin> shangPinList;
-    private LayoutInflater layoutInflater;
     private Activity activity;
 
     public ShouYeListAdapter(Activity activity, ArrayList<ShangPin> list) {
-        this.layoutInflater = activity.getLayoutInflater();
         this.shangPinList = list;
         this.activity = activity;
     }
@@ -50,7 +47,7 @@ public class ShouYeListAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.first_top, null);
+            convertView = activity.getLayoutInflater().from(activity).inflate(R.layout.first_top, null);
 
             viewHolder.name = (TextView) convertView.findViewById(R.id.shouyelist_name_id);
             viewHolder.price = (TextView) convertView.findViewById(R.id.shouyelist_price_id);

@@ -1,7 +1,6 @@
 package com.lingshimall.lingshixiaomiao.adapters;
 
 import android.app.Activity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,13 +18,12 @@ import java.util.ArrayList;
  */
 public class CustomJSKSListViewAdapter extends BaseAdapter {
     private ArrayList<JJKSGoods> goodses;
-    private LayoutInflater layoutInflater;
     private Activity activity;
 
     public CustomJSKSListViewAdapter(ArrayList<JJKSGoods> goodses, Activity activity) {
         this.goodses = goodses;
         this.activity = activity;
-        this.layoutInflater = activity.getLayoutInflater();
+
     }
 
     @Override
@@ -49,7 +47,7 @@ public class CustomJSKSListViewAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.listview_item_jsks_layout, null);
+            convertView = activity.getLayoutInflater().from(activity).inflate(R.layout.listview_item_jsks_layout, null);
             holder.picture = (ImageView) convertView.findViewById(R.id.list_picture_id);
             holder.name = (TextView) convertView.findViewById(R.id.list_name_id);
             holder.discount = (TextView) convertView.findViewById(R.id.list_discount_id);

@@ -68,7 +68,7 @@ public class ShouYe extends Fragment {
         main_view = inflater.inflate(R.layout.fragment_shouye_layout, container, false);
         listView = (BlogsListView) main_view.findViewById(R.id.shouye_listview_id);
         //添加加载视图
-        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout, null);
+        View emptyView = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.listview_emptyview_layout, null);
         listView.setEmptyView(emptyView);
         //给listview的Adapter请求数据
         new RequestDataForListView().start();
