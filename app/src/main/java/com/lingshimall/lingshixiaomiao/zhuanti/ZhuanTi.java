@@ -1,5 +1,6 @@
 package com.lingshimall.lingshixiaomiao.zhuanti;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +15,8 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.LieBiaoActivity;
+import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.ZhuanTiListViewAdapter;
 import com.lingshimall.lingshixiaomiao.beans.TMZGoods;
 import com.lingshimall.lingshixiaomiao.beans.URLs;
@@ -93,14 +96,7 @@ public class ZhuanTi extends Fragment {
             @Override
             public void run() {
                 super.run();
-//                byte[] bytes=TeMaiUtils.getJsonStrData(URLs.ZHUANTI);
-//                Log.i("tag", "run: "+bytes);
-//                if (bytes!=null && bytes.length>0){
-//                list_jsonStr= new String(bytes,0,bytes.length);
-//                Log.d("taag",list_jsonStr);}
                 list_jsonStr=getJsonFromNet(URLs.ZHUANTI);
-                Log.d("taag",list_jsonStr);
-
                 handler.sendEmptyMessage(1);
             }
         }.start();
@@ -119,6 +115,8 @@ public class ZhuanTi extends Fragment {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                   Intent intent=new Intent(getActivity(), LieBiaoActivity.class);
+                   startActivity(intent);
                }
            });
 
@@ -138,6 +136,16 @@ public class ZhuanTi extends Fragment {
         }
         gridView.setAdapter(new ZhuantiGridAdapter(gridItems,getActivity()));
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getActivity(), XiangQingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
 
@@ -149,40 +157,28 @@ public class ZhuanTi extends Fragment {
             try {
                 zhuanTis=new ArrayList<>();
                 JSONObject firstObj = new JSONObject(list_jsonStr);
-//                int rs_code = firstObj.getInt("rs_code");
-//                String rs_msg = firstObj.getString("rs_msg");
 
-//                if (rs_msg.equals("success") && rs_code == 1000) {
                     JSONObject jsonObject=firstObj.getJSONObject("data");
                     JSONArray jsonArray=jsonObject.getJSONArray("items");
                     for (int i=0;i<jsonArray.length();i++){
                         ZhuanTiModel zhuantiModel=new ZhuanTiModel();
-
                         JSONObject itemObj = jsonArray.getJSONObject(i);
                         int id=itemObj.getInt("id");
-                        Log.i("tag", "parseJson: "+id);
                         zhuantiModel.setId(id);
                         String desc=itemObj.getString("desc");
-                        Log.i("tag", "parseJson: "+desc);
                         zhuantiModel.setDesc(desc);
                         String title=itemObj.getString("title");
-                        Log.i("tag", "parseJson: "+title);
                         zhuantiModel.setTitle(title);
                         JSONObject jsonImg=itemObj.getJSONObject("img");
                         String img_url=jsonImg.getString("img_url");
-                        Log.i("tag", "parseJson: "+img_url);
                         zhuantiModel.setImg_url(img_url);
                         int hotindex=itemObj.getInt("hotindex");
-                        Log.i("tag", "parseJson: "+hotindex);
                         zhuantiModel.setHotindex(hotindex);
 
                         zhuanTis.add(zhuantiModel);
-//                    }
-
-
                 }
 
-                Log.i("tag", "parseJson: zhuanTis.size()"+zhuanTis.size());
+
                 return zhuanTis;
 
             } catch (JSONException e) {
