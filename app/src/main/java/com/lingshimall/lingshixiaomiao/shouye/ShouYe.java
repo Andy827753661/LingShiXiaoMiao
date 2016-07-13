@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.ShoppingCarActivity;
 import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.CustomShouYeAdapter;
 import com.lingshimall.lingshixiaomiao.adapters.ShouYeListAdapter;
@@ -98,7 +99,14 @@ public class ShouYe extends Fragment {
   });
 
 
-
+  ImageView car=(ImageView) main_view.findViewById(R.id.car_id);
+        car.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ShoppingCarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return main_view;
     }
@@ -108,6 +116,7 @@ public class ShouYe extends Fragment {
         shouye_viewpager = (ViewPager) headview.findViewById(R.id.shouye_viewpager_id);
           ImageView  img  =(ImageView)  headview.findViewById(R.id.qiqi_id);
          ImageView photto=(ImageView) headview.findViewById(R.id.photto);
+
           img.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View v) {
