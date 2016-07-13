@@ -62,7 +62,7 @@
             android:name=".activitys.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".BaseActivity" />
-
+        <activity android:name=".activitys.XiangQingActivity"></activity>
         <!-- 友盟AppKey， 需要替换成你自己的 -->
         <meta-data
             android:name="UMENG_APPKEY"

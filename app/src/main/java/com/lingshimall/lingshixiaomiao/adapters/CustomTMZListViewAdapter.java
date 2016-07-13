@@ -78,7 +78,7 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         holder.discount.setText(good.getTag().getTitle());
         holder.progress.setProgress(good.getSpecial_percentage());
         holder.yiqiang.setText("已抢" + good.getSpecial_num() + "件");
-        holder.percent.setText("已抢" + good.getSpecial_percentage());
+        holder.percent.setText("剩余" + good.getSpecial_percentage() + "%");
         Picasso.with(activity).load(good.getImg().getImg_url()).into(holder.picture);
         holder.addcar.setOnClickListener(new TheClickListenerForAddcar());
         return convertView;
