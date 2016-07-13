@@ -119,7 +119,8 @@
         <uses-library android:name="android.test.runner" />
 
         <activity android:name=".activitys.RegisteLogin_2_Activity" />
-        <activity android:name=".activitys.ShoppingCarActivity"></activity>
+        <activity android:name=".activitys.ShoppingCarActivity" />
+        <activity android:name=".activitys.LieBiaoActivity"></activity>
     </application>
 
 </manifest>

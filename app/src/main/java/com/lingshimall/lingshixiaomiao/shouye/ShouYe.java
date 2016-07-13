@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.beans.URLs;
 import com.lingshimall.lingshixiaomiao.fragments.BlogsListView;
+import com.lingshimall.lingshixiaomiao.utils.TeMaiUtils;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -338,6 +340,8 @@ class MyTask extends AsyncTask<String, Void, byte[]> {
                     baos.flush();
                 }
 
+                Log.i("tag", "doInBackground: "+baos.toByteArray().toString());
+
                 // Toast.makeText(context, baos.toByteArray().toString(),
                 // Toast.LENGTH_LONG).show();
                 return baos.toByteArray();
@@ -358,6 +362,8 @@ class MyTask extends AsyncTask<String, Void, byte[]> {
                 e.printStackTrace();
             }
         }
+
+       // return TeMaiUtils.getJsonStrData(params[0]);
         return null;
     }
 
@@ -366,27 +372,22 @@ class MyTask extends AsyncTask<String, Void, byte[]> {
     @Override
     protected void onPostExecute(byte[] bytes) {
 
-        String jsonString=bytes.toString();
-        List <Shangpin> list =Jsonparse.JsonContext(jsonString);
-
-        getdata.data(list);
-
-
-
-
-
         super.onPostExecute(bytes);
+        if (bytes!=null && bytes.length>0){
+            String jsonString=new String(bytes);
+            List <Shangpin> list =Jsonparse.JsonContext(jsonString);
+
+            getdata.data(list);
+        }
+
+
+
     }
 
 }
 class  Jsonparse{
     private static   Shangpin shangpin;
     private static   List<Shangpin> list = new ArrayList<>();
-
-
-
-
-
     public  static  List<Shangpin>   JsonContext(String jsonString){
         try {
             JSONObject  object= new JSONObject(jsonString);
@@ -412,7 +413,7 @@ class  Jsonparse{
 
             }
 
-
+return list;
 
         } catch (JSONException e) {
             e.printStackTrace();
