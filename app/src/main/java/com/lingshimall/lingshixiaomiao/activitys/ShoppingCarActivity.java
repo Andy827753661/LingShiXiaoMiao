@@ -30,7 +30,7 @@ public class ShoppingCarActivity extends BaseActivity {
     public static String sum = "";
 
     public static List<Boolean> booleans = new ArrayList<Boolean>();
-
+    
     public Handler handler = new Handler() {
         public void handleMessage(Message message) {
             String string = "";

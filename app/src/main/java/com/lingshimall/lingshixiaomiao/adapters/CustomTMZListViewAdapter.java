@@ -1,6 +1,8 @@
 package com.lingshimall.lingshixiaomiao.adapters;
 
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,9 @@ import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.beans.TMZGoods;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by 张 波 on 2016/7/7.
@@ -22,6 +26,7 @@ import java.util.ArrayList;
 public class CustomTMZListViewAdapter extends BaseAdapter {
     private ArrayList<TMZGoods> goodses;
     private Activity activity;
+    private TimeHandler handler;
 
     public CustomTMZListViewAdapter(ArrayList<TMZGoods> goodses, Activity activity) {
         this.goodses = goodses;
@@ -69,7 +74,9 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         }
         TMZGoods good = goodses.get(position);
         holder.name.setText(good.getTitle());
-        holder.time.setText(good.getTime() + "");
+//        holder.time.setText(good.getTime() + "");
+        handler = new TimeHandler(holder.time, good.getTime());
+        handler.obtainMessage(2).sendToTarget();
         holder.price.setText(good.getPrice().getCurrent() + "");
         holder.jianyishoujia.setText(good.getPrice().getPrime() + "");
         holder.discount.setText(good.getTag().getTitle());
@@ -86,9 +93,53 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
-            Log.e("ClickListenerForAddcar", "onClick==加入购物车！！！ ");
-            Toast.makeText(activity, "加入购物车！", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(activity, "成功加入购物车", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private class TimeHandler extends Handler {
+        private TextView timeView;
+        private int mTime;
+
+        public TimeHandler(TextView timeView, int time) {
+            this.timeView = timeView;
+            this.mTime = time;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 2) {
+                String t = CustomTMZListViewAdapter.getDateToString(mTime);
+                timeView.setText(t);
+                new TheTimeThread(mTime).start();
+            }
+        }
+    }
+
+    public class TheTimeThread extends Thread {
+        int mTime;
+
+        public TheTimeThread(int time) {
+            this.mTime = mTime;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            mTime = mTime - 1000;
+            if (mTime > 0) {
+                Message message = handler.obtainMessage(2);
+                handler.sendMessageDelayed(message, 1000);
+            }
+        }
+    }
+
+    public static String getDateToString(long time) {
+        Date d = new Date(time * 100L);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd日HH时mm分ss秒");
+        return simpleDateFormat.format(d);
     }
 
     private class ViewHolder {
@@ -97,3 +148,4 @@ public class CustomTMZListViewAdapter extends BaseAdapter {
         ProgressBar progress;
     }
 }
+
