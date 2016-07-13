@@ -7,14 +7,17 @@ public class ShangPin {
     private String goods;
     private int price;
     private String picture;
+    private int shangpin_id;
 
     public ShangPin() {
     }
 
-    public ShangPin(String goods, int price, String picture) {
+    public ShangPin(String goods, int price, String picture,int shangpin_id) {
         this.goods = goods;
         this.price = price;
         this.picture = picture;
+        this.shangpin_id=shangpin_id;
+
     }
 
     public String getGoods() {
@@ -39,5 +42,13 @@ public class ShangPin {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public int getShangpin_id() {
+        return shangpin_id;
+    }
+
+    public void setShangpin_id(int shangpin_id) {
+        this.shangpin_id = shangpin_id;
     }
 }
