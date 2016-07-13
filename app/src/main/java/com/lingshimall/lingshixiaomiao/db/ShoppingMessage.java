@@ -90,7 +90,7 @@ public class ShoppingMessage {
 						.getColumnIndex("ProName")));
 				shopping.setPrice(cursor.getDouble(cursor
 						.getColumnIndex("shopPrice")));
-				shopping.setImage(cursor.getString(cursor.getColumnIndex("proImg")));
+				shopping.setImage(cursor.getInt(cursor.getColumnIndex("proImg")));
 				shopping.setCount(cursor.getInt(cursor
 						.getColumnIndex("proCount")));
 				shopping.setUserName(cursor.getString(cursor

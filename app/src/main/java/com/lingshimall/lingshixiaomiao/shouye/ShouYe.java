@@ -1,5 +1,6 @@
 package com.lingshimall.lingshixiaomiao.shouye;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,13 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
+import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.CustomShouYeAdapter;
 import com.lingshimall.lingshixiaomiao.adapters.ShouYeListAdapter;
+import com.lingshimall.lingshixiaomiao.beans.JJKSGoods;
 import com.lingshimall.lingshixiaomiao.beans.ShangPin;
 import com.lingshimall.lingshixiaomiao.beans.URLs;
 import com.lingshimall.lingshixiaomiao.fragments.BlogsListView;
@@ -72,12 +77,51 @@ public class ShouYe extends Fragment {
 
         aboutDots();
 
+  listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getActivity(),"点击事件",Toast.LENGTH_SHORT).show();
+          if (view != null) {
+              int jjksId =  shangPinsList.get((position)-1).getShangpin_id();
+              Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+              Bundle bundle = new Bundle();
+              bundle.putInt("GoodId", jjksId);
+              intent.putExtras(bundle);
+              startActivity(intent);
+          } else {
+              Toast.makeText(getActivity(), "网络阻塞，请刷新", Toast.LENGTH_SHORT).show();
+
+          }
+
+
+      }
+  });
+
+
+
+
         return main_view;
     }
 
     private void creatANDaddViewToListView() {
         headview = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.shouye_top, null);
         shouye_viewpager = (ViewPager) headview.findViewById(R.id.shouye_viewpager_id);
+          ImageView  img  =(ImageView)  headview.findViewById(R.id.qiqi_id);
+         ImageView photto=(ImageView) headview.findViewById(R.id.photto);
+          img.setOnClickListener(new OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Toast.makeText(getActivity(),"新的Activity",Toast.LENGTH_SHORT).show();
+              }
+          });
+         photto.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Toast.makeText(getActivity(),"此处省略1000000000000000000000000000字",Toast.LENGTH_SHORT).show();
+             }
+         });
+
+
         creatDataForVP();
         setAdapterForVP();
         shouye_viewpager.setOnPageChangeListener(new MyOnPageChangeListener());

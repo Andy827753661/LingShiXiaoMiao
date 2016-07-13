@@ -69,6 +69,7 @@ public class ShouYeUtils {
                     for (int i = 0; i < count; i++) {
                         JSONObject itemObj = itemArr.getJSONObject(i);
                         String title = itemObj.getString("title");
+                        int shangpin_id=itemObj.getInt("id");
 
                         JSONObject priceObj = itemObj.getJSONObject("price");
                         int current = priceObj.getInt("current");
@@ -76,7 +77,8 @@ public class ShouYeUtils {
                         JSONObject imgObj = itemObj.getJSONObject("img");
                         String img_url = imgObj.getString("img_url");
 
-                        ShangPin shangPin = new ShangPin(title, current, img_url);
+
+                        ShangPin shangPin = new ShangPin(title, current, img_url,shangpin_id);
                         shangPins.add(shangPin);
                     }
                     return shangPins;
