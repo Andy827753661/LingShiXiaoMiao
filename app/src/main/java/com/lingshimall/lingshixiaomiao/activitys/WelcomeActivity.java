@@ -41,12 +41,13 @@ public class WelcomeActivity extends Activity {
 
         boolean isUsed = sharedPreferences.getBoolean("isUsed", false);
         if (isUsed) {
+            setContentView(R.layout.activity_welcome2);
             SystemClock.sleep(3000);
-           startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
         } else {
 
-            setContentView(R.layout.activity_welcome);
+            setContentView(R.layout.activity_welcome1);
 
 
             vp_welcome_id = (ViewPager) findViewById(R.id.vp_welcome_id);

@@ -43,11 +43,9 @@
 
 
     <com.lingshimall.lingshixiaomiao.fragments.BlogsListView
-        android:id="@+id/lv_id"
+        android:id="@+id/shouye_listview_id"
         android:layout_below="@id/top_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
     </com.lingshimall.lingshixiaomiao.fragments.BlogsListView>
 </RelativeLayout>

@@ -999,7 +999,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      *
      * @param scrollValue - Position to scroll to
      */
-    protected final void smoothScrollTo(int scrollValue) {
+    protected void smoothScrollTo(int scrollValue) {
         smoothScrollTo(scrollValue, getPullToRefreshScrollDuration());
     }
 
