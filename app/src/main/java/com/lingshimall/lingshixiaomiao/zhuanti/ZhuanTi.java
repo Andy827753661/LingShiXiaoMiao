@@ -115,8 +115,8 @@ public class ZhuanTi extends Fragment {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                   Intent intent=new Intent(getActivity(), LieBiaoActivity.class);
-                   startActivity(intent);
+//                   Intent intent=new Intent(getActivity(), XiangQingActivity.class);
+//                   startActivity(intent);
                }
            });
 
@@ -139,8 +139,8 @@ public class ZhuanTi extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getActivity(), XiangQingActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(getActivity(), XiangQingActivity.class);
+//                startActivity(intent);
             }
         });
 
