@@ -2,12 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/zhuanti_list_item_iv"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_cat_collection_noting"
 
@@ -17,26 +18,27 @@
         android:id="@+id/zhuanti_list_item_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:background="#ded4d4"
-        android:text="sdkan"
+        android:layout_marginTop="210dp"
+        android:background="@null"
+        android:text="123456"
         android:textColor="#ffffff"
-        android:textSize="15sp"
-        />
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal|top" />
 
     <RelativeLayout
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="320dp"
+        android:id="@+id/zhuanti_count_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:background="#e6bebe">
+        android:background="@null"
+        android:gravity="center"
+        android:layout_gravity="right|top">
 
         <ImageView
             android:id="@+id/zhuanti_list_item_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingTop="4dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@mipmap/icon_like_mine" />
 
         <TextView
@@ -44,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/zhuanti_list_item_like"
-            android:paddingLeft="6dp"
-            android:text="100" />
+            android:gravity="center"
+            android:text="666" />
     </RelativeLayout>
 </FrameLayout>

@@ -73,5 +73,18 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-android-support:3.4.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
-
+    compile files('libs/MobCommons-2016.0623.1641.jar')
+    compile files('libs/MobTools-2016.0623.1641.jar')
+    compile files('libs/ShareSDK-Alipay-2.7.3.jar')
+    compile files('libs/ShareSDK-Core-2.7.3.jar')
+    compile files('libs/ShareSDK-QQ-2.7.3.jar')
+    compile files('libs/ShareSDK-QZone-2.7.3.jar')
+    compile files('libs/ShareSDK-Renren-2.7.3.jar')
+    compile files('libs/ShareSDK-ShortMessage-2.7.3.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.7.3.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.7.3.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.3.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.3.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.7.3.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.7.3.jar')
 }
