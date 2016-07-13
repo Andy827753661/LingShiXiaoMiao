@@ -85,8 +85,12 @@ public class ShoppingCarActivity extends AppCompatActivity {
         Intent intent=getIntent();
         userName=intent.getStringExtra("userName");
 
-        ShoppingMessage shoppingMessage=new ShoppingMessage();
+       ShoppingMessage shoppingMessage=new ShoppingMessage();
         list=shoppingMessage.getShopping(userName,this);
+
+        if(list!=null){
+
+        }
 
         ShoppingCarAdapter adapter=new ShoppingCarAdapter(this,list,handler);
 

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.LieBiaoActivity;
@@ -106,7 +107,7 @@ public class ZhuanTi extends Fragment {
 
     private void listViewsetdata(){
         if (list_jsonStr!=null) {
-            ArrayList<ZhuanTiModel> list = parseJson(list_jsonStr);
+            final ArrayList<ZhuanTiModel> list = parseJson(list_jsonStr);
 
             ZhuanTiListViewAdapter adapter = new ZhuanTiListViewAdapter(getContext(), list);
 
@@ -114,6 +115,17 @@ public class ZhuanTi extends Fragment {
            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   if (list != null) {
+                    int jjksId = list.get(position).getId();
+                    Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("GoodId", jjksId);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "网络阻塞，请刷新", Toast.LENGTH_SHORT).show();
+
+                }
 
 //                   Intent intent=new Intent(getActivity(), XiangQingActivity.class);
 //                   startActivity(intent);
@@ -139,6 +151,18 @@ public class ZhuanTi extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (jjksGoodses != null) {
+//                    int jjksId = jjksGoodses.get(position).getId();
+//                    Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt("GoodId", jjksId);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(getActivity(), "网络阻塞，请刷新", Toast.LENGTH_SHORT).show();
+//
+//                }
+
 //                Intent intent=new Intent(getActivity(), XiangQingActivity.class);
 //                startActivity(intent);
             }

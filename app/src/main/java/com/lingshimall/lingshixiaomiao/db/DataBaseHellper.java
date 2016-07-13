@@ -32,8 +32,11 @@ public class DataBaseHellper extends SQLiteOpenHelper {
 //				R.drawable.shanyao };
 		// 用户表
 		db.execSQL("create table UserList (_id integer primary key autoincrement,userName ,image,PassWord,money double)");
+		db.execSQL("insert into UserList(userName ,image,PassWord,money ) values('123','kdsjfk','123','172')");
+		db.execSQL("insert into UserList(userName ,image,PassWord,money ) values('1234','kdsjfk','123','172')");
 		// 购物车表
-		db.execSQL("create table ShoppingList (_id integer primary key autoincrement,userName,ProName,shopPrice double, proImg,proCount integer)");
+		db.execSQL("create table ShoppingList (_id integer primary key autoincrement,userName,ProName,shopPrice double, proImg)");
+		db.execSQL("insert into ShoppingList(userName,ProName,shopPrice, proImg,proCount) values('123','方便面',12.9,'kfjdskl')");
 		// 收藏表
 		db.execSQL("create table CollectList (_id integer primary key autoincrement,userName,collectName ,collectPrice double,collectImg integer)");
 		// 已经付款订单表

@@ -30,13 +30,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
 
-        //向数据库添加
-        User user=new User();
-        user.setUserName("123");
-        user.setPassword("123");
-        user.setImg_url("dshfkjhdslkfhkja");
-        UserMessage userMessage=new UserMessage();
-        userMessage.addUser(this,user);
+//        //向数据库添加
+//        User user=new User();
+//        user.setUserName("123");
+//        user.setPassword("123");
+//        user.setImg_url("dshfkjhdslkfhkja");
+//        UserMessage userMessage=new UserMessage();
+//        userMessage.addUser(this,user);
 
 
         x.view().inject(this);
