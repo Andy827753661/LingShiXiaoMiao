@@ -17,9 +17,14 @@ import android.widget.Toast;
 
 import com.lingshimall.lingshixiaomiao.R;
 import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
+import com.lingshimall.lingshixiaomiao.activitys.LieBiaoActivity;
+import com.lingshimall.lingshixiaomiao.activitys.XiangQingActivity;
 import com.lingshimall.lingshixiaomiao.adapters.ZhuanTiListViewAdapter;
+import com.lingshimall.lingshixiaomiao.beans.TMZGoods;
 import com.lingshimall.lingshixiaomiao.beans.URLs;
 import com.lingshimall.lingshixiaomiao.beans.ZhuanTiModel;
+import com.lingshimall.lingshixiaomiao.utils.TeMaiUtils;
+import com.umeng.socialize.bean.HandlerRequestCode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,14 +115,7 @@ public class ZhuanTi extends Fragment {
             @Override
             public void run() {
                 super.run();
-//                byte[] bytes=TeMaiUtils.getJsonStrData(URLs.ZHUANTI);
-//                Log.i("tag", "run: "+bytes);
-//                if (bytes!=null && bytes.length>0){
-//                list_jsonStr= new String(bytes,0,bytes.length);
-//                Log.d("taag",list_jsonStr);}
                 list_jsonStr=getJsonFromNet(URLs.ZHUANTI);
-                Log.d("taag",list_jsonStr);
-
                 handler.sendEmptyMessage(1);
             }
         }.start();
@@ -177,29 +175,21 @@ public class ZhuanTi extends Fragment {
 
                         JSONObject itemObj = jsonArray.getJSONObject(i);
                         int id=itemObj.getInt("id");
-                        Log.i("tag", "parseJson: "+id);
                         zhuantiModel.setId(id);
                         String desc=itemObj.getString("desc");
-                        Log.i("tag", "parseJson: "+desc);
                         zhuantiModel.setDesc(desc);
                         String title=itemObj.getString("title");
-                        Log.i("tag", "parseJson: "+title);
                         zhuantiModel.setTitle(title);
                         JSONObject jsonImg=itemObj.getJSONObject("img");
                         String img_url=jsonImg.getString("img_url");
-                        Log.i("tag", "parseJson: "+img_url);
                         zhuantiModel.setImg_url(img_url);
                         int hotindex=itemObj.getInt("hotindex");
-                        Log.i("tag", "parseJson: "+hotindex);
                         zhuantiModel.setHotindex(hotindex);
 
                         zhuanTis.add(zhuantiModel);
-//                    }
-
-
                 }
 
-                Log.i("tag", "parseJson: zhuanTis.size()"+zhuanTis.size());
+
                 return zhuanTis;
 
             } catch (JSONException e) {

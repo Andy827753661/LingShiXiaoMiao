@@ -74,16 +74,17 @@ public class RegisteActivity extends BaseActivity {
 
     /*检查字符串是否为电话号码的方法,并回传true or false的判断值*/
     public static boolean isPhoneNumberValid(String mobiles){
-        Matcher m = null;
+        //Matcher m = null;
         if(mobiles.trim().length()>0){
 //            Pattern p = Pattern.compile("1[3|5|7|8|][0-9]{9}");
 //            m= p.matcher(mobiles);
+            return true;
         }
         else{
 
             return false;
         }
-        return m.matches();
+       // return m.matches();
     }
 
     //跳转到登录界面
