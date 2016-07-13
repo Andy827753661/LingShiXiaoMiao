@@ -62,6 +62,9 @@ public class ShouYe extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         main_view = inflater.inflate(R.layout.fragment_shouye_layout, container, false);
         listView = (BlogsListView) main_view.findViewById(R.id.shouye_listview_id);
+        //添加加载视图
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.listview_emptyview_layout, null);
+        listView.setEmptyView(emptyView);
         //给listview的Adapter请求数据
         new RequestDataForListView().start();
         //渲染出头部view，并添加到listview
@@ -81,6 +84,7 @@ public class ShouYe extends Fragment {
         shouye_container_id = (LinearLayout) headview.findViewById(R.id.shouye_container_id);
 
         listView.addHeaderView(headview);
+
     }
 
     private void setAdapterForVP() {
