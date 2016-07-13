@@ -76,12 +76,13 @@ public class ShouYe extends Fragment {
         creatANDaddViewToListView();
 
         aboutDots();
+
   listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getActivity(),"点击事件",Toast.LENGTH_SHORT).show();
           if (view != null) {
-              int jjksId =  shangPinsList.get(position).getShangpin_id();
+              int jjksId =  shangPinsList.get((position)-1).getShangpin_id();
               Intent intent = new Intent(getActivity(), XiangQingActivity.class);
               Bundle bundle = new Bundle();
               bundle.putInt("GoodId", jjksId);
@@ -105,7 +106,20 @@ public class ShouYe extends Fragment {
     private void creatANDaddViewToListView() {
         headview = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.shouye_top, null);
         shouye_viewpager = (ViewPager) headview.findViewById(R.id.shouye_viewpager_id);
-
+          ImageView  img  =(ImageView)  headview.findViewById(R.id.qiqi_id);
+         ImageView photto=(ImageView) headview.findViewById(R.id.photto);
+          img.setOnClickListener(new OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Toast.makeText(getActivity(),"新的Activity",Toast.LENGTH_SHORT).show();
+              }
+          });
+         photto.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Toast.makeText(getActivity(),"此处省略1000000000000000000000000000字",Toast.LENGTH_SHORT).show();
+             }
+         });
 
 
         creatDataForVP();
